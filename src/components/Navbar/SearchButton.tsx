@@ -26,7 +26,9 @@ const SearchButton = () => {
 
         <HiMagnifyingGlass className='me-1' />
       </div>
-      <h6 className='text-md text-slate-700 font-semibold'>Search</h6>
+      <h6 className='text-md text-slate-700 font-semibold poppins-medium text-sm'>
+        Search
+      </h6>
     </div>
   )
 }

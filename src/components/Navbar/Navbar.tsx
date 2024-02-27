@@ -1,11 +1,11 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PrimaryButton from '../PrimaryButton'
 import SearchButton from './SearchButton'
 
 const Navbar = () => {
   const navigate = useNavigate()
   return (
-    <nav className='py-4 shadow-md'>
+    <nav className='py-4 shadow-md relative z-0'>
       {/* left section */}
       <div className='container mx-auto flex justify-between'>
         <div>
@@ -20,10 +20,16 @@ const Navbar = () => {
         {/* right section */}
         <div className='flex items-center'>
           {/* links */}
-          <ul className='flex font-semibold text-slate-700 gap-5 text-md'>
-            <li>Home</li>
-            <li>Category</li>
-            <li>About Me</li>
+          <ul className='flex font-semibold text-slate-700 gap-5 text-md poppins-medium text-sm'>
+            <li>
+              <Link to='/'>Home</Link>
+            </li>
+            <li>
+              <Link to='/'>Category</Link>
+            </li>
+            <li>
+              <Link to='/'>About me</Link>
+            </li>
           </ul>
           {/* search button */}
           <SearchButton />

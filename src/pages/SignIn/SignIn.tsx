@@ -1,9 +1,8 @@
-import PrimaryButton from '../../components/PrimaryButton'
 import SignInForm from './SignInForm'
 
 const SignIn = () => {
   return (
-    <main>
+    <main className='relative'>
       <div className='grid grid-cols-2'>
         <div className='py-24 px-12'>
           <SignInForm />

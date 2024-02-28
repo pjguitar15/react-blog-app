@@ -1,9 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
 import PrimaryButton from '../PrimaryButton'
 import SearchButton from './SearchButton'
+import { useAuthContext } from '../../Context/AuthContext'
 
 const Navbar = () => {
   const navigate = useNavigate()
+  const { loggedInUser } = useAuthContext()
   return (
     <nav className='py-4 shadow-md relative z-0'>
       {/* left section */}
@@ -41,12 +43,21 @@ const Navbar = () => {
             />
           </div>
           <div className='ms-2'>
-            <PrimaryButton
-              onClick={() => navigate('/sign-in')}
-              text='Sign In'
-              size='normal'
-              outline
-            />
+            {loggedInUser ? (
+              <PrimaryButton
+                onClick={() => navigate('/admin/dashboard')}
+                text='Go to Dashboard'
+                size='normal'
+                outline
+              />
+            ) : (
+              <PrimaryButton
+                onClick={() => navigate('/sign-in')}
+                text='Sign In'
+                size='normal'
+                outline
+              />
+            )}
           </div>
         </div>
       </div>

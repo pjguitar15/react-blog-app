@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom'
 import AdminLink from './AdminLink'
 import { AiOutlineThunderbolt } from 'react-icons/ai'
 import { AiOutlineDashboard } from 'react-icons/ai'
+import { signOut } from 'firebase/auth'
+import { auth } from '../../firebase/firebaseConfig'
 
 const TEST_LINKS = [
   {
@@ -48,15 +49,25 @@ const AdminSidebar = () => {
         {TEST_LINKS.map((item, index) => (
           <AdminLink item={item} key={index} />
         ))}
-        <Link
-          to={`/sign-in`}
+        <div
+          onClick={() => {
+            signOut(auth)
+              .then(() => {
+                // Sign-out successful.
+                console.log('Sign out success')
+              })
+              .catch((error) => {
+                // An error happened.
+                console.log(error)
+              })
+          }}
           className='flex justify-start ps-14 gap-3 items-center py-3 border-l-4 hover:border-violet-700 cursor-pointer'
         >
           <AiOutlineThunderbolt className='text-slate-500' />
           <h5 className='text-sm poppins-regular text-slate-500 capitalize'>
             Logout
           </h5>
-        </Link>
+        </div>
       </div>
     </div>
   )

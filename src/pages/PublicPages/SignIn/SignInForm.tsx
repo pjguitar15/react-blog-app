@@ -5,11 +5,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebase/firebaseConfig'
 
-const SignInForm = () => {
+const SignInForm: React.FC<{
+  loginSuccess: boolean
+  setLoginSuccess: React.Dispatch<React.SetStateAction<boolean>>
+}> = ({ loginSuccess, setLoginSuccess }) => {
   const [emailInput, setEmailInput] = useState('')
   const [passwordInput, setPasswordInput] = useState('')
   const [error, setError] = useState('')
-  const [loginSuccess, setLoginSuccess] = useState(false)
 
   const navigate = useNavigate()
 
@@ -17,12 +19,14 @@ const SignInForm = () => {
     e.preventDefault()
 
     if (emailInput && passwordInput) {
-      signInWithEmailAndPassword(auth, emailInput, passwordInput).catch(
-        (error) => {
+      signInWithEmailAndPassword(auth, emailInput, passwordInput)
+        .then(() => {
+          setLoginSuccess(true)
+        })
+        .catch((error) => {
           const errorMessage = error.message
           setError(errorMessage)
-        }
-      )
+        })
       setError('')
     } else {
       console.log('INCORRECT CREDENTIALS')

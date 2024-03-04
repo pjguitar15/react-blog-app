@@ -1,4 +1,4 @@
-import Categories from '../pages/Admin/admin-pages/Categories'
+import Categories from '../pages/Admin/admin-pages/Categories/Categories'
 import Dashboard from '../pages/Admin/admin-pages/Dashboard'
 import Posts from '../pages/Admin/admin-pages/Posts'
 import Settings from '../pages/Admin/admin-pages/Settings'

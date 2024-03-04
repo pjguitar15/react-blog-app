@@ -51,6 +51,11 @@ const SignInForm: React.FC<{
             alt=''
           />
         </div>
+        <div className='bg-yellow-100 border border-yellow-200 p-3 rounded text-yellow-900'>
+          <p className='text-sm font-semibold'>Test Credentials</p>
+          <p className='text-sm'>Username: admin@admin.com</p>
+          <p className='text-sm'>Password: adminadmin</p>
+        </div>
         <input
           className='bg-gray-100 px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm'
           value={emailInput}

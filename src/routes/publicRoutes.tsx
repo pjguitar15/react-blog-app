@@ -1,6 +1,8 @@
-import Home from '../pages/Home/Home'
-import Register from '../pages/Register/Register'
-import SignIn from '../pages/SignIn/SignIn'
+import About from '../pages/PublicPages/About/About'
+import BuyMeACoffee from '../pages/PublicPages/BuyMeACoffee/BuyMeACoffee'
+import Home from '../pages/PublicPages/Home/Home'
+import Register from '../pages/PublicPages/Register/Register'
+import SignIn from '../pages/PublicPages/SignIn/SignIn'
 
 export const publicRoutes = [
   {
@@ -16,6 +18,16 @@ export const publicRoutes = [
   {
     path: '/register',
     element: <Register />,
+    index: true,
+  },
+  {
+    path: '/about',
+    element: <About />,
+    index: true,
+  },
+  {
+    path: '/buy-me-a-coffee',
+    element: <BuyMeACoffee />,
     index: true,
   },
 ]

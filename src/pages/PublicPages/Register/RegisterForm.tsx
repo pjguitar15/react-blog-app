@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import PrimaryButton from '../../components/PrimaryButton'
-import SuccessModal from '../../components/SuccessModal'
+import PrimaryButton from '../../../components/PrimaryButton.tsx'
+import SuccessModal from '../../../components/SuccessModal.tsx'
 import { Link, useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../../firebase/firebaseConfig.ts'
+import { auth } from '../../../firebase/firebaseConfig.ts'
 const RegisterForm = () => {
   const [emailInput, setEmailInput] = useState('')
   const [passwordInput, setPasswordInput] = useState('')
@@ -49,7 +49,7 @@ const RegisterForm = () => {
     <>
       {loginSuccess && (
         <SuccessModal
-          message='Account created successfully! Please sign in.'
+          message='Account created successfully! Signing in...'
           action={() => navigate('/sign-in')}
         />
       )}

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 type AdminLinkTypes = {
   title: string
@@ -8,15 +8,17 @@ type AdminLinkTypes = {
 
 const AdminLink: React.FC<{ item: AdminLinkTypes }> = ({ item }) => {
   return (
-    <Link
+    <NavLink
       to={`/admin/${item.title}`}
-      className='flex justify-start ps-14 gap-3 items-center py-3 border-l-4 hover:border-violet-700 cursor-pointer'
+      className={({ isActive, isPending }) =>
+        `flex justify-start ps-14 gap-3 items-center py-3 border-l-4 hover:border-violet-700 cursor-pointer ${
+          isPending ? 'pending' : isActive ? 'active' : ''
+        }`
+      }
     >
       {item.icon}
-      <h5 className='text-sm poppins-regular text-slate-500 capitalize'>
-        {item.title}
-      </h5>
-    </Link>
+      <h5 className={`text-sm text-slate-500 capitalize`}>{item.title}</h5>
+    </NavLink>
   )
 }
 

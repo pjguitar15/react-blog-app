@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import PrimaryButton from '../../components/PrimaryButton'
-import SuccessModal from '../../components/SuccessModal'
+import PrimaryButton from '../../../components/PrimaryButton'
+import SuccessModal from '../../../components/SuccessModal'
 import { Link, useNavigate } from 'react-router-dom'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../../firebase/firebaseConfig'
+import { auth } from '../../../firebase/firebaseConfig'
 
 const SignInForm = () => {
   const [emailInput, setEmailInput] = useState('')
@@ -17,16 +17,12 @@ const SignInForm = () => {
     e.preventDefault()
 
     if (emailInput && passwordInput) {
-      signInWithEmailAndPassword(auth, emailInput, passwordInput)
-        .then((userCredential) => {
-          const user = userCredential.user
-          console.log(user)
-          setLoginSuccess(true)
-        })
-        .catch((error) => {
+      signInWithEmailAndPassword(auth, emailInput, passwordInput).catch(
+        (error) => {
           const errorMessage = error.message
           setError(errorMessage)
-        })
+        }
+      )
       setError('')
     } else {
       console.log('INCORRECT CREDENTIALS')
@@ -38,7 +34,7 @@ const SignInForm = () => {
       {loginSuccess && (
         <SuccessModal
           message='Successfully logged in!'
-          action={() => navigate('/admin')}
+          action={() => navigate('/admin/dashboard')}
         />
       )}
       <form

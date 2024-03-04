@@ -1,4 +1,4 @@
-import HeroImage from '../../assets/hero-img.png'
+import HeroImage from '../../../assets/hero-img.png'
 const HeroSection = () => {
   return (
     <section className='bg-gray-100'>

@@ -5,7 +5,7 @@ import { useAuthContext } from '../../Context/AuthContext'
 
 const Navbar = () => {
   const navigate = useNavigate()
-  const { loggedInUser } = useAuthContext()
+  const { loggedInUser, loading } = useAuthContext()
   return (
     <nav className='py-4 shadow-md relative z-0'>
       {/* left section */}
@@ -30,33 +30,37 @@ const Navbar = () => {
               <Link to='/'>Category</Link>
             </li>
             <li>
-              <Link to='/'>About me</Link>
+              <Link to='/about'>About me</Link>
             </li>
           </ul>
           {/* search button */}
           <SearchButton />
-          <div className='ms-2'>
+          <div className='ms-7'>
             <PrimaryButton
-              onClick={() => console.log('test')}
+              onClick={() => navigate('/buy-me-a-coffee')}
               text='☕ Buy me a coffee'
               size='normal'
             />
           </div>
           <div className='ms-2'>
-            {loggedInUser ? (
-              <PrimaryButton
-                onClick={() => navigate('/admin/dashboard')}
-                text='Go to Dashboard'
-                size='normal'
-                outline
-              />
-            ) : (
-              <PrimaryButton
-                onClick={() => navigate('/sign-in')}
-                text='Sign In'
-                size='normal'
-                outline
-              />
+            {!loading && (
+              <>
+                {loggedInUser ? (
+                  <PrimaryButton
+                    onClick={() => navigate('/admin/dashboard')}
+                    text='Go to Dashboard'
+                    size='normal'
+                    outline
+                  />
+                ) : (
+                  <PrimaryButton
+                    onClick={() => navigate('/sign-in')}
+                    text='Sign In'
+                    size='normal'
+                    outline
+                  />
+                )}
+              </>
             )}
           </div>
         </div>

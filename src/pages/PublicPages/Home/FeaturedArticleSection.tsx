@@ -1,5 +1,5 @@
 import { SlArrowRight } from 'react-icons/sl'
-import ArticleCard from '../../components/ArticleCard'
+import ArticleCard from '../../../components/ArticleCard'
 
 const TEST_AUTHOR_IMAGE =
   'https://scontent.fmnl33-6.fna.fbcdn.net/v/t39.30808-6/415498733_24540656215581232_7927848766146061217_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeH9jej0YvFLaYs4s7kcq_BhyJcZVrg1GDbIlxlWuDUYNu1fq36opt2_FpihapjaGWJqEJ9HSPGHbjX_Qkbq9rJz&_nc_ohc=vcpTY796y-QAX-27BwH&_nc_ht=scontent.fmnl33-6.fna&oh=00_AfC-M8UwbBphdJl2N-9hCrnnqa7kf5E0e6SvPSr5lDnl4w&oe=65E18E10'

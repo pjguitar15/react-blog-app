@@ -1,17 +1,22 @@
 import { useNavigate } from 'react-router-dom'
 import SignInForm from './SignInForm'
 import { useEffect } from 'react'
-import { useAuthContext } from '../../Context/AuthContext'
+import { useAuthContext } from '../../../Context/AuthContext'
 
 const SignIn = () => {
   const navigate = useNavigate()
   const { loggedInUser } = useAuthContext()
 
   useEffect(() => {
-    if (loggedInUser) {
-      navigate('/admin')
+    const checkAuthentication = async () => {
+      // Your asynchronous authentication check
+      if (loggedInUser) {
+        navigate('/admin/dashboard')
+      }
     }
-  }, [loggedInUser])
+
+    checkAuthentication()
+  }, [loggedInUser, navigate])
 
   return (
     <main>

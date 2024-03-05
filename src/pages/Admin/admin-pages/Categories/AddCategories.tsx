@@ -1,7 +1,7 @@
 import { TbCategory } from 'react-icons/tb'
 import PrimaryButton from '../../../../components/PrimaryButton'
 import { HiOutlineArrowLeft } from 'react-icons/hi2'
-import { useAuthContext } from '../../../../context/AuthContext'
+import { useAuthContext } from '../../../../Context/AuthContext'
 import { useState } from 'react'
 import { storage } from '../../../../firebase/firebaseConfig'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'

@@ -4,7 +4,7 @@ import Footer from './components/Footer'
 import AdminSidebar from './pages/Admin/AdminSidebar'
 import { publicRoutes } from './routes/publicRoutes'
 import { privateRoutes } from './routes/privateRoutes'
-import AuthProvider from './context/AuthProvider'
+import AuthProvider from './Context/AuthProvider'
 import AuthGuardWrapper from './components/AuthGuardWrapper'
 
 const NavbarWrapper = () => {

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import PrimaryButton from '../PrimaryButton'
 import SearchButton from './SearchButton'
-import { useAuthContext } from '../../context/AuthContext'
+import { useAuthContext } from '../../Context/AuthContext'
 
 const Navbar = () => {
   const navigate = useNavigate()

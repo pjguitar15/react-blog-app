@@ -2,7 +2,7 @@ import Categories from '../pages/Admin/admin-pages/Categories/Categories'
 import Dashboard from '../pages/Admin/admin-pages/Dashboard'
 import Posts from '../pages/Admin/admin-pages/Posts'
 import Settings from '../pages/Admin/admin-pages/Settings'
-import Tags from '../pages/Admin/admin-pages/Tags'
+import Tags from '../pages/Admin/admin-pages/Tags/Tags'
 import Users from '../pages/Admin/admin-pages/Users'
 
 export const privateRoutes = [

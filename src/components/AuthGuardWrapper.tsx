@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useAuthContext } from '../Context/AuthContext'
+import { useAuthContext } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
 const AuthGuardWrapper: React.FC<{ children: React.ReactNode }> = ({

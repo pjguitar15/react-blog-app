@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import SignInForm from './SignInForm'
 import { useEffect, useState } from 'react'
-import { useAuthContext } from '../../../Context/AuthContext'
+import { useAuthContext } from '../../../context/AuthContext'
 
 const SignIn = () => {
   const [loginSuccess, setLoginSuccess] = useState(false)

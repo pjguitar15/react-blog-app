@@ -1,6 +1,6 @@
 import Categories from '../pages/Admin/admin-pages/Categories/Categories'
 import Dashboard from '../pages/Admin/admin-pages/Dashboard'
-import Posts from '../pages/Admin/admin-pages/Posts'
+import Blogs from '../pages/Admin/admin-pages/Blogs/Blogs'
 import Settings from '../pages/Admin/admin-pages/Settings'
 import Tags from '../pages/Admin/admin-pages/Tags/Tags'
 import Users from '../pages/Admin/admin-pages/Users'
@@ -17,8 +17,8 @@ export const privateRoutes = [
     index: true,
   },
   {
-    path: '/admin/posts',
-    element: <Posts />,
+    path: '/admin/blogs',
+    element: <Blogs />,
     index: true,
   },
   {

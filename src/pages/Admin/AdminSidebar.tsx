@@ -19,7 +19,7 @@ const TEST_LINKS = [
     icon: <TbCategory className='text-slate-500' />,
   },
   {
-    title: 'posts',
+    title: 'blogs',
     icon: <TbWriting className='text-slate-500' />,
   },
   {

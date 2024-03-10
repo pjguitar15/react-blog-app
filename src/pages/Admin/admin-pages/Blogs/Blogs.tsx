@@ -17,6 +17,7 @@ const Blogs = () => {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   )
+  
   return (
     <main className='bg-slate-100 w-full p-7'>
       <div className='flex justify-between font-semibold'>

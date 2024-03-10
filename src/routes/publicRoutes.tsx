@@ -1,4 +1,5 @@
 import About from '../pages/PublicPages/About/About'
+import AllBlogs from '../pages/PublicPages/AllBlogs/AllBlogs'
 import BuyMeACoffee from '../pages/PublicPages/BuyMeACoffee/BuyMeACoffee'
 import Home from '../pages/PublicPages/Home/Home'
 import Register from '../pages/PublicPages/Register/Register'
@@ -8,6 +9,11 @@ export const publicRoutes = [
   {
     path: '/',
     element: <Home />,
+    index: true,
+  },
+  {
+    path: '/blogs',
+    element: <AllBlogs />,
     index: true,
   },
   {

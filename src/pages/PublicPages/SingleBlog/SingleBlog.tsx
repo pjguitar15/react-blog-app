@@ -127,7 +127,7 @@ const DETAIL_ITEMS = [
     detailName: 'author',
     titleName: TEST_CONTENT.author,
   },
-  {
+{
     roundColor: 'bg-blue-500',
     detailName: 'publish date',
     titleName: TEST_CONTENT.publishDate,

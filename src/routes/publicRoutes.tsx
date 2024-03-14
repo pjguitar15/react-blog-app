@@ -15,31 +15,25 @@ export const publicRoutes = [
   {
     path: '/blogs',
     element: <AllBlogs />,
-    index: true,
   },
   {
     path: '/blog/:id',
     element: <SingleBlog />,
-    index: true,
   },
   {
     path: '/sign-in',
     element: <SignIn />,
-    index: true,
   },
   {
     path: '/register',
     element: <Register />,
-    index: true,
   },
   {
     path: '/about',
     element: <About />,
-    index: true,
   },
   {
     path: '/buy-me-a-coffee',
     element: <BuyMeACoffee />,
-    index: true,
   },
 ]

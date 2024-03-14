@@ -43,7 +43,9 @@ const Navbar = () => {
             />
           </div>
           <div className='ms-2'>
-            {!loading && (
+            {loading ? (
+              <div className='w-40 rounded-md h-10 bg-violet-200 animate-pulse'></div>
+            ) : (
               <>
                 {loggedInUser ? (
                   <PrimaryButton

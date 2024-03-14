@@ -8,6 +8,8 @@ import { IoPricetagOutline } from 'react-icons/io5'
 import { FaRegUser } from 'react-icons/fa'
 import { CiSettings } from 'react-icons/ci'
 import { CiLogout } from 'react-icons/ci'
+import { GoHome } from 'react-icons/go'
+import { Link } from 'react-router-dom'
 
 const TEST_LINKS = [
   {
@@ -38,7 +40,7 @@ const TEST_LINKS = [
 
 const AdminSidebar = () => {
   return (
-    <div className='h-screen w-1/5 border-r border-gray-200'>
+    <div className='h-screen w-1/5 border-r border-gray-200 flex flex-col'>
       <div className='p-4'>
         <div className='size-10 rounded-full bg-violet-700 mx-auto'></div>
         <div className='flex justify-center items-end cursor-pointer mx-auto'>
@@ -74,6 +76,13 @@ const AdminSidebar = () => {
           </h5>
         </div>
       </div>
+      <Link
+        to='/'
+        className='mt-auto w-full mb-6 text-violet-600 poppins-regular text-sm flex gap-1 items-center justify-center hover:scale-105 transition duration-300'
+      >
+        <GoHome className='text-lg' />
+        Go to Homepage
+      </Link>
     </div>
   )
 }

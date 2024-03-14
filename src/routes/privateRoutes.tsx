@@ -9,31 +9,25 @@ export const privateRoutes = [
   {
     path: '/admin/dashboard',
     element: <Dashboard />,
-    index: true,
   },
   {
     path: '/admin/categories',
     element: <Categories />,
-    index: true,
   },
   {
     path: '/admin/blogs',
     element: <Blogs />,
-    index: true,
   },
   {
     path: '/admin/tags',
     element: <Tags />,
-    index: true,
   },
   {
     path: '/admin/users',
     element: <Users />,
-    index: true,
   },
   {
     path: '/admin/settings',
     element: <Settings />,
-    index: true,
   },
 ]

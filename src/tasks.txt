@@ -6,14 +6,15 @@ Blog App Tasks:
 - Added custom alert ✅
 - Fix bug AddCategories.tsx ✅
 - Display Categories to backend Read mode ✅
-- Add skeleton loading to Go To Dashboard button
-- Learn what index in react router dom actually do
-- Add a button in admin panel to go back to home
-- Create Add blog page 
+- Add skeleton loading to Go To Dashboard button ✅
+- Learn what index in react router dom actually do ✅
+- Add a button in admin panel to go back to home ✅
+- Add Create blog content page 
 - Add active state to navbar 
 - Deploy App to Vercel
 - Add Delete button to Admin categories item
 - Add loading component to Admin categories
+- Fix issue when going to blogs page. The page doesn't start from the top
 
 NarXpress
 - configure san mateo rizal and testing (base price is 35)✅

@@ -9,7 +9,7 @@ const DisplayCategories = ({
   const { getDocFromFirestore, data } = useGetDoc()
   getDocFromFirestore('categories')
   return (
-    <main className='bg-slate-100 w-full p-7'>
+    <main className='bg-slate-100 w-full p-7 max-h-screen overflow-scroll'>
       <div className='flex justify-between font-semibold'>
         <div className='flex items-center gap-3'>
           <h5 className='text-lg'>Categories</h5>

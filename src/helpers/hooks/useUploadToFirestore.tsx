@@ -2,7 +2,7 @@ import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../../firebase/firebaseConfig'
 
 export const useUploadToFirestore = () => {
-  const uploadPayload = (collectionName: string, payload) => {
+  const uploadPayload = (collectionName: string, payload: any) => {
     return new Promise((resolve, reject) => {
       const collectionRef = collection(db, collectionName)
 

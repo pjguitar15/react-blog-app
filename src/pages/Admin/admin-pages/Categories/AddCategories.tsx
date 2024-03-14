@@ -2,7 +2,7 @@ import { TbCategory } from 'react-icons/tb'
 import PrimaryButton from '../../../../components/PrimaryButton'
 import { HiOutlineArrowLeft } from 'react-icons/hi2'
 import { useAuthContext } from '../../../../Context/AuthContext'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { storage } from '../../../../firebase/firebaseConfig'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { useUploadToFirestore } from '../../../../helpers/hooks/useUploadToFirestore'
@@ -18,23 +18,30 @@ const AddCategories = ({
 }) => {
   const [categoryInput, setCategoryInput] = useState('')
   const [error, setError] = useState('')
-  const [imageUpload, setImageUpload] = useState<ImageUploadType | null>(null)
+  const [imageUpload, setImageUpload] = useState<
+    ImageUploadType | ArrayBuffer | null
+  >(null)
   const [uploadLoading, setUploadLoading] = useState(false)
   const { loggedInUser } = useAuthContext()
   const { uploadPayload } = useUploadToFirestore()
+
+  useEffect(() => {
+    console.log(imageUpload)
+  }, [imageUpload])
 
   const addCategoryHandler = async (e: React.FormEvent) => {
     e.preventDefault()
 
     const validations = {
       isCategoryNotEmpty: categoryInput !== '',
-      isImageNotEmpty: imageUpload !== null,
+      isImageNotEmpty: imageUpload !== null && imageUpload instanceof File,
     }
 
     if (validations.isCategoryNotEmpty && validations.isImageNotEmpty) {
-      const imageRef = ref(storage, `images/${imageUpload?.name}`)
+      const selectedImage = imageUpload as File
+      const imageRef = ref(storage, `images/${selectedImage.name}`)
       setUploadLoading(true)
-      uploadBytes(imageRef, imageUpload)
+      uploadBytes(imageRef, selectedImage)
         .then(() => {
           return getDownloadURL(imageRef)
         })
@@ -81,7 +88,7 @@ const AddCategories = ({
           </button>
         </div>
         <form
-          className='flex flex-col w-3/4 mx-auto gap-3 bg-white p-12 rounded-xl max-w-[700px] mt-12 shadow-md'
+        className='flex flex-col w-3/4 mx-auto gap-3 bg-white p-12 rounded-xl max-w-[700px] mt-12 shadow-md'
           onSubmit={addCategoryHandler}
         >
           <TbCategory className='text-violet-500 text-8xl mx-auto mb-3' />

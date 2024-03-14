@@ -1,7 +1,7 @@
 Blog App Tasks:
-- Fix footer type errors
-- Fix useUploadToFirestore type
-- Fix AddCategories type
+- Fix footer type errors ✅
+- Fix useUploadToFirestore type (work around: by pass 'any') ✅
+- Fix AddCategories type ✅ *thanks chatgpt 😆
 - Add progress bar component (already built, need to complete)
 - Fix bug AddCategories.tsx
 - Display Categories to backend Read mode

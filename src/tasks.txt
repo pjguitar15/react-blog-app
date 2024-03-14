@@ -4,14 +4,16 @@ Blog App Tasks:
 - Fix AddCategories type ✅ *thanks chatgpt 😆
 - Add progress bar component, and add a success message after an upload ✅
 - Added custom alert ✅
-- Fix bug AddCategories.tsx
-- Display Categories to backend Read mode
+- Fix bug AddCategories.tsx ✅
+- Display Categories to backend Read mode ✅
 - Add skeleton loading to Go To Dashboard button
 - Learn what index in react router dom actually do
 - Add a button in admin panel to go back to home
 - Create Add blog page 
 - Add active state to navbar 
 - Deploy App to Vercel
+- Add Delete button to Admin categories item
+- Add loading component to Admin categories
 
 NarXpress
 - configure san mateo rizal and testing (base price is 35)✅

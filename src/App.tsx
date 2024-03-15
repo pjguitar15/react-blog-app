@@ -6,6 +6,7 @@ import { publicRoutes } from './routes/publicRoutes'
 import { privateRoutes } from './routes/privateRoutes'
 import AuthProvider from './Context/AuthProvider'
 import AuthGuardWrapper from './components/AuthGuardWrapper'
+import BlogProvider from './Context/BlogProvider'
 
 const NavbarWrapper = () => {
   return (
@@ -45,7 +46,9 @@ const App = () => {
   return (
     <div className='relative'>
       <AuthProvider>
-        <RouterProvider router={router} />
+        <BlogProvider>
+          <RouterProvider router={router} />
+        </BlogProvider>
       </AuthProvider>
     </div>
   )

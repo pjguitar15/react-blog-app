@@ -4,6 +4,7 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import { MdContentCopy } from 'react-icons/md'
 import { TEST_ROW_DATA } from './testData'
 import Pagination from '../../../../components/Pagination'
+import { Link } from 'react-router-dom'
 
 const Blogs = () => {
   const itemsPerPage = 4 // You can adjust this value based on your preference.
@@ -17,7 +18,7 @@ const Blogs = () => {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   )
-  
+
   return (
     <main className='bg-slate-100 w-full p-7'>
       <div className='flex justify-between font-semibold'>
@@ -25,10 +26,13 @@ const Blogs = () => {
           <h5 className='text-lg'>{TEST_ROW_DATA.length} Blogs</h5>
           {/* <div className='bg-slate-800 h-0.5 w-9 mt-1'></div> */}
         </div>
-        <button className='flex items-center gap-2 bg-violet-700 text-white px-4 rounded-lg py-2'>
+        <Link
+          to='/admin/blogs/new'
+          className='flex items-center gap-2 bg-violet-600 text-white px-4 rounded-lg py-2'
+        >
           <FaCirclePlus className='text-xl' />
           <h5 className='text-md'>Create</h5>
-        </button>
+        </Link>
       </div>
       {/* Table here */}
       <div className='bg-white rounded-lg mt-8 border'>

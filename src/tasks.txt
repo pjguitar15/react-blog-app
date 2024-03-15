@@ -9,12 +9,26 @@ Blog App Tasks:
 - Add skeleton loading to Go To Dashboard button ✅
 - Learn what index in react router dom actually do ✅
 - Add a button in admin panel to go back to home ✅
-- Add Create blog content page 
+- Add Create blog content page (will take a long time!)
 - Add active state to navbar 
 - Deploy App to Vercel
 - Add Delete button to Admin categories item
 - Add loading component to Admin categories
 - Fix issue when going to blogs page. The page doesn't start from the top
+- Add nice purple background design on login and register page
+- add gaps on blog page
+- Add Hi, User on navbar when user is logged in
+- Optimize landing page image 2.3MB!
+- Decide a new blog name and update the website
+- On the blogs data, add a category on the dummy items, and make the category buttons dynamic
+- Add social links to footer
+- Search for good dashboard design and implement
+- Create User Table (just copy from blogs table)
+- Add code component in blog post
+- Add GCash to Buy me A Coffee
+- Update About me content
+- Create comments component in single blog page
+- Add 'Continue Writing Post' button above Go to Homepage
 
 NarXpress
 - configure san mateo rizal and testing (base price is 35)✅

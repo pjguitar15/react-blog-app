@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import PrimaryButton from '../PrimaryButton'
 import SearchButton from './SearchButton'
 import { useAuthContext } from '../../Context/AuthContext'
@@ -24,13 +24,34 @@ const Navbar = () => {
           {/* links */}
           <ul className='flex font-semibold text-slate-700 gap-5 text-md poppins-medium text-sm'>
             <li>
-              <Link to='/'>Home</Link>
+              <NavLink
+                to='/'
+                className={({ isActive, isPending }) =>
+                  isPending ? 'pending' : isActive ? 'nav-active' : ''
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to='/blogs?category=All'>Blogs</Link>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending ? 'pending' : isActive ? 'nav-active' : ''
+                }
+                to='/blogs?category=All'
+              >
+                Blogs
+              </NavLink>
             </li>
             <li>
-              <Link to='/about'>About me</Link>
+              <NavLink
+                to='/about'
+                className={({ isActive, isPending }) =>
+                  isPending ? 'pending' : isActive ? 'nav-active' : ''
+                }
+              >
+                About me
+              </NavLink>
             </li>
           </ul>
           {/* search button */}

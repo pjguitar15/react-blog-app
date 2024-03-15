@@ -1,36 +1,15 @@
-import { useState } from 'react'
-import TextInput from './TextInput'
+import 'react-quill/dist/quill.snow.css'
 
 const ContentForm = () => {
-  const [title, setTitle] = useState('')
-
   return (
-    <div className='py-4 px-7 bg-white border shadow-sm rounded-lg grid grid-cols-2 gap-5'>
-      <div>
-        <TextInput
-          label='Title'
-          placeholder='This is my blog'
-          state={[title, setTitle]}
-        />
-        <TextInput
-          label='Title'
-          placeholder='This is my blog'
-          state={[title, setTitle]}
-        />
-        <TextInput
-          label='Title'
-          placeholder='This is my blog'
-          state={[title, setTitle]}
-        />
-      </div>
-
-      <div>
-        <TextInput
-          label='Title'
-          placeholder='This is my blog'
-          state={[title, setTitle]}
-        />
-      </div>
+    <div className='py-4 px-7 bg-white border shadow-sm rounded-lg'>
+      <h1>Hello World</h1>
+      {/* <div>
+        <div className='text-sm poppins-regular text-gray-500 mb-1'>
+          Main Body <span className='text-red-500'>*</span>
+        </div>
+        <ReactQuill theme='snow' value={content} onChange={setContent} />
+      </div> */}
     </div>
   )
 }

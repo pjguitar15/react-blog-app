@@ -5,7 +5,7 @@ import ContentForm from './ContentForm'
 
 const NewBlog = () => {
   return (
-    <main className='bg-slate-100 w-full p-7'>
+    <main className='bg-slate-100 w-full p-7 max-h-screen overflow-y-scroll'>
       <div className='flex justify-between font-semibold mb-4'>
         <div className='flex items-center gap-3'>
           <h5 className='text-lg'>New Blog Post</h5>
@@ -19,8 +19,10 @@ const NewBlog = () => {
           <h5 className='text-md'>Save</h5>
         </Link>
       </div>
-      <BlogDetailsForm />
-      <ContentForm />
+      <div className='flex flex-col gap-3'>
+        <BlogDetailsForm />
+        <ContentForm />
+      </div>
     </main>
   )
 }

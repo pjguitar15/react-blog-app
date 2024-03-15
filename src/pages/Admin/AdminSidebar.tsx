@@ -17,12 +17,12 @@ const TEST_LINKS = [
     icon: <AiOutlineDashboard className='text-slate-500' />,
   },
   {
-    title: 'categories',
-    icon: <TbCategory className='text-slate-500' />,
-  },
-  {
     title: 'blogs',
     icon: <TbWriting className='text-slate-500' />,
+  },
+  {
+    title: 'categories',
+    icon: <TbCategory className='text-slate-500' />,
   },
   {
     title: 'tags',

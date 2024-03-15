@@ -18,6 +18,12 @@ export type BlogContextType = {
   setIsFeatured: React.Dispatch<SetStateAction<boolean>>
   isCommentsDisabled: boolean
   setIsCommentsDisabled: React.Dispatch<SetStateAction<boolean>>
+  content: string
+  setContent: React.Dispatch<SetStateAction<string>>
+  summary: string
+  setSummary: React.Dispatch<SetStateAction<string>>
+  selectedFile: null
+  setSelectedFile: React.Dispatch<SetStateAction<null>>
 }
 
 const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -31,6 +37,9 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isPublished, setIsPublished] = useState(false)
   const [isFeatured, setIsFeatured] = useState(false)
   const [isCommentsDisabled, setIsCommentsDisabled] = useState(false)
+  const [content, setContent] = useState('')
+  const [summary, setSummary] = useState('')
+  const [selectedFile, setSelectedFile] = useState(null)
 
   const contextValue: BlogContextType = {
     title,
@@ -49,6 +58,12 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     setIsFeatured,
     isCommentsDisabled,
     setIsCommentsDisabled,
+    content,
+    setContent,
+    summary,
+    setSummary,
+    selectedFile,
+    setSelectedFile,
   }
   return (
     <BlogContext.Provider value={contextValue}>{children}</BlogContext.Provider>

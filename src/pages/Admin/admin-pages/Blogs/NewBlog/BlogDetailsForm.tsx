@@ -1,6 +1,7 @@
 import TextInput from './TextInput'
 import CheckboxInput from './CheckboxInput'
 import { useBlogContext } from '../../../../../Context/BlogContext'
+import { GoPlus } from 'react-icons/go'
 
 const BlogDetailsForm = () => {
   const {
@@ -20,7 +21,15 @@ const BlogDetailsForm = () => {
     setIsFeatured,
     isCommentsDisabled,
     setIsCommentsDisabled,
+    summary,
+    setSummary,
+    selectedFile,
+    setSelectedFile,
   } = useBlogContext()
+
+  const handleFileChange = (e: any) => {
+    setSelectedFile(e.target.files[0])
+  }
 
   const CATEGORIES = ['Category 1', 'Category 2', 'Category 3']
 
@@ -58,6 +67,11 @@ const BlogDetailsForm = () => {
           placeholder='/this-is-my-blog'
           state={[route, setRoute]}
         />
+        <TextInput
+          label='Summary'
+          placeholder='Brief introduction about your article'
+          state={[summary, setSummary]}
+        />
       </div>
 
       <div>
@@ -78,6 +92,30 @@ const BlogDetailsForm = () => {
           label='Disable Comments'
           boolState={[isCommentsDisabled, setIsCommentsDisabled]}
         />
+        <div className='relative mt-3 inline-block w-3/6'>
+          <label htmlFor='fileInput' className='cursor-pointer block'>
+            <input
+              id='fileInput'
+              type='file'
+              className='sr-only'
+              onChange={handleFileChange}
+            />
+            <div className='border border-dashed border-gray-400 rounded-md justify-center items-center'>
+              {selectedFile ? (
+                <img
+                  src={URL.createObjectURL(selectedFile)}
+                  alt='Selected file'
+                  className='h-52 w-full object-cover object-top object'
+                />
+              ) : (
+                <div className='my-5 flex flex-col items-center'>
+                  <GoPlus className='text-gray-500 text-4xl' />
+                  <p className='mt-2 text-sm text-gray-500'>Add Image</p>
+                </div>
+              )}
+            </div>
+          </label>
+        </div>
       </div>
     </div>
   )

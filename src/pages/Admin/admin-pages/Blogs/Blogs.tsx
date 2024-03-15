@@ -7,7 +7,7 @@ import Pagination from '../../../../components/Pagination'
 import { Link } from 'react-router-dom'
 
 const Blogs = () => {
-  const itemsPerPage = 4 // You can adjust this value based on your preference.
+  const itemsPerPage = 8 // You can adjust this value based on your preference.
   const [currentPage, setCurrentPage] = useState(1)
 
   const handlePageChange = (page: number) => {

@@ -50,7 +50,7 @@ const SingleBlog = () => {
                     {item.content}
                   </p>
                 )}
-                {item.type === 'subheading' && (
+                {item.type === 'heading' && (
                   <h5 className='text-lg poppins-medium text-slate-700'>
                     {item.content}
                   </h5>
@@ -127,7 +127,7 @@ const DETAIL_ITEMS = [
     detailName: 'author',
     titleName: TEST_CONTENT.author,
   },
-{
+  {
     roundColor: 'bg-blue-500',
     detailName: 'publish date',
     titleName: TEST_CONTENT.publishDate,

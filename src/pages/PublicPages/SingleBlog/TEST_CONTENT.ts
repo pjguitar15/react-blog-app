@@ -18,7 +18,7 @@ export const TEST_CONTENT = {
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis maxime voluptates nesciunt est incidunt cupiditate? Ex, facere nam, esse laborum libero ratione minima eaque, atque quia explicabo accusantium reprehenderit at! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis maxime voluptates nesciunt est incidunt cupiditate? Ex, facere nam, esse laborum libero ratione minima eaque, atque quia explicabo accusantium reprehenderit at!',
     },
     {
-      type: 'subheading',
+      type: 'heading',
       content: 'Hello World, this is just a test.',
     },
     {
@@ -27,7 +27,7 @@ export const TEST_CONTENT = {
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis maxime voluptates nesciunt est incidunt cupiditate? Ex, facere nam, esse laborum libero ratione minima eaque, atque quia explicabo accusantium reprehenderit at! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis maxime voluptates nesciunt est incidunt cupiditate? Ex, facere nam, esse laborum libero ratione minima eaque, atque quia explicabo accusantium reprehenderit at! Corporis maxime voluptates nesciunt est incidunt cupiditate? Ex, facere nam, esse laborum libero ratione minima eaque, atque quia explicabo accusantium reprehenderit at!',
     },
     {
-      type: 'subheading',
+      type: 'heading',
       content: 'Use of Facebook in the Marketing Industry',
     },
     {
@@ -36,7 +36,7 @@ export const TEST_CONTENT = {
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis maxime voluptates nesciunt est incidunt cupiditate? Ex, facere nam, esse laborum libero ratione minima eaque, atque quia explicabo accusantium reprehenderit at! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis maxime voluptates nesciunt est incidunt cupiditate? Ex, facere nam, esse laborum libero ratione minima eaque, atque quia explicabo accusantium reprehenderit at! Corporis maxime voluptates nesciunt est incidunt cupiditate? Ex, facere nam, esse laborum libero ratione minima eaque, atque quia explicabo accusantium reprehenderit at!',
     },
     {
-      type: 'subheading',
+      type: 'heading',
       content: 'Use of Facebook in the Marketing Industry',
     },
     {

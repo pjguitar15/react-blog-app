@@ -29,7 +29,7 @@ const Footer = () => {
         </div>
         {/* right */}
         <div className='grid grid-cols-4 w-4/6'>
-          {Array.from({ length: 4 }).map((item, index) => (
+          {[1, 2, 3, 4].map((item, index) => (
             <div className='flex flex-col gap-2 text-sm' key={index}>
               <h6 className='uppercase poppins-semibold'>Category</h6>
               <h6 className='poppins-light'>CSS</h6>
@@ -37,6 +37,7 @@ const Footer = () => {
               <h6 className='poppins-light'>Tailwind</h6>
               <h6 className='poppins-light'>ReactJS</h6>
               <h6 className='poppins-light'>More Category</h6>
+              <div className='hidden'>{item}</div>
             </div>
           ))}
         </div>

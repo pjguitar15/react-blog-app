@@ -13,8 +13,8 @@ Blog App Tasks: https://react-blog-app-sand.vercel.app/
 🔸Complete first part ✅
 🔸Add active state to navbar ✅
 🔸Deploy App to Vercel ✅
-🔸Add Delete button to Admin categories item ⚠️ Added delete button and modal but no functionality yet
-🔸Add loading component to Admin categories ⚠️ Quota exceeded, wait for 1 day
+🔸Add Delete button to Admin categories item ✅
+🔸Add loading component to Admin categories ✅
 🔸Continue the Main content section of New Blog Post page
 🔸Add 3 mins data to blog form
 🔸Add thumbnail version of featured image to blog form
@@ -35,6 +35,11 @@ Blog App Tasks: https://react-blog-app-sand.vercel.app/
 🔸Add 'Continue Writing Post' button above Go to Homepage
 🔸Add validation on Route input in New Blog Post page (shouldn't allow some characters and spacing)
 🔸Fix tags page design
+🔸Add author column in blogs table admin
+🔸Add text color on sidebar active state
+🔸Add drag component to arrange order in create blog content form using framer motion
+🔸Add lazy loading to images in category
+
 
 NarXpress
 - configure san mateo rizal and testing (base price is 35)✅

@@ -5,10 +5,14 @@ const DeleteConfirmModal = ({
   open,
   setOpen,
   message,
+  deleteHandler,
+  loading,
 }: {
   open: boolean
   setOpen: React.Dispatch<SetStateAction<boolean>>
   message: string
+  deleteHandler: () => void
+  loading: boolean
 }) => {
   return (
     <div
@@ -31,7 +35,11 @@ const DeleteConfirmModal = ({
             : `If you delete this record, you will permanently lose this information. Do you wish to proceed?`}
         </p>
         <div className='flex justify-end gap-2'>
-          <button className='bg-red-500 px-4 py-1 rounded text-white'>
+          <button
+            onClick={deleteHandler}
+            className={`bg-red-500 px-4 py-1 rounded text-white disabled:opacity-40 disabled:cursor-not-allowed`}
+            disabled={loading}
+          >
             Delete
           </button>
           <button

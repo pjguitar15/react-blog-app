@@ -15,15 +15,11 @@ Blog App Tasks: https://react-blog-app-sand.vercel.app/
 🔸Deploy App to Vercel ✅
 🔸Add Delete button to Admin categories item ✅
 🔸Add loading component to Admin categories ✅
-🔸Continue the Main content section of New Blog Post page
-🔸Add 3 mins data to blog form
-🔸Add thumbnail version of featured image to blog form
-🔸Fix issue when going to blogs page. The page doesn't start from the top
-🔸Add nice purple background design on login and register page
-🔸add gaps on blog page
-🔸Add Hi, User on navbar when user is logged in
-🔸Optimize landing page image 2.3MB!
-🔸Decide a new blog name and update the website
+🔸Continue the Main content section of New Blog Post page ✅
+🔸Add 3 mins data to blog form ✅
+🔸add gaps on blog page ✅
+🔸Optimize landing page image 2.3MB! ✅
+🔸Decide a new blog name and update the website ✅
 🔸On the blogs data, add a category on the dummy items, and make the category buttons dynamic
 🔸Add social links to footer
 🔸Search for good dashboard design and implement
@@ -41,7 +37,9 @@ Blog App Tasks: https://react-blog-app-sand.vercel.app/
 🔸Add lazy loading to images in category
 🔸Add initial date in published on form input
 🔸Fix the image clickable area to replace the image
-
+🔸Add thumbnail version of featured image to blog form
+🔸Remove Create Blog Global State when user clicks logout
+🔸Add nice purple background design on login and register page
 
 NarXpress
 - configure san mateo rizal and testing (base price is 35)✅

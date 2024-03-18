@@ -27,6 +27,8 @@ export type BlogContextType = {
   setSelectedFile: React.Dispatch<SetStateAction<null>>
   contentData: ContentDataType[]
   setContentData: React.Dispatch<SetStateAction<ContentDataType[]>>
+  readTime: string
+  setReadTime: React.Dispatch<SetStateAction<string>>
 }
 
 const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -42,6 +44,7 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isCommentsDisabled, setIsCommentsDisabled] = useState(false)
   const [content, setContent] = useState('')
   const [summary, setSummary] = useState('')
+  const [readTime, setReadTime] = useState('')
   const [selectedFile, setSelectedFile] = useState(null)
   const [contentData, setContentData] = useState<ContentDataType[]>([
     { content: 'Please edit this heading', id: 'shn25ay5w', type: 'heading' },
@@ -78,6 +81,8 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     setSelectedFile,
     contentData,
     setContentData,
+    readTime,
+    setReadTime,
   }
   return (
     <BlogContext.Provider value={contextValue}>{children}</BlogContext.Provider>

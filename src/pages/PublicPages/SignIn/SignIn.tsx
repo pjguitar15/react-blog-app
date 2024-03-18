@@ -13,7 +13,7 @@ const SignIn = () => {
       // Your asynchronous authentication check
       if (loggedInUser) {
         setTimeout(() => {
-          navigate('/admin/dashboard')
+          navigate('/admin/blogs/new')
         }, 3000)
       }
     }

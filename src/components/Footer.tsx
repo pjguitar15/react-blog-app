@@ -2,21 +2,28 @@ import { CiFacebook } from 'react-icons/ci'
 import { FaInstagram } from 'react-icons/fa'
 import { RiYoutubeLine } from 'react-icons/ri'
 import { RiTwitterXFill } from 'react-icons/ri'
+import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
   const currentDate = new Date()
   const currentYear = currentDate.getFullYear()
+  const navigate = useNavigate()
   return (
     <section className='bg-gray-200 pt-12 pb-5'>
       <div className='container mx-auto flex'>
         {/* left */}
         <div className='w-2/6'>
-          <div className='flex items-end'>
-            <h4 className='text-blue-900 text-2xl font-semibold'>Dasteen</h4>
-            <p className='text-purple-500 font-medium text-md'>.Blog</p>
+          <div
+            className='flex items-end cursor-pointer'
+            onClick={() => navigate('/')}
+          >
+            <h4 className='text-blue-900 text-2xl poppins-semibold'>
+              DevGuide
+            </h4>
+            <p className='text-purple-500 poppins-medium text-md'>.Blog</p>
           </div>
           <p className='poppins-light text-sm text-slate-500 my-3'>
-            Digital Dastin by Philcob Josol
+            DevGuide Blog by Philcob Josol
           </p>
 
           {/* Social Media */}
@@ -46,7 +53,7 @@ const Footer = () => {
         <hr className='border-slate-400 my-5' />
         <div className='flex justify-between'>
           <h6 className='poppins-medium text-slate-500 text-sm'>
-            &copy; {currentYear} Philcob Blog
+            &copy; {currentYear} DevGuide Blog
           </h6>
           <h6 className='poppins-medium text-slate-500 text-sm'>
             Made with 💖 Nabua, Philippines

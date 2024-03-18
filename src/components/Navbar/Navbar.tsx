@@ -15,8 +15,10 @@ const Navbar = () => {
             className='flex items-end cursor-pointer'
             onClick={() => navigate('/')}
           >
-            <h4 className='text-blue-900 text-2xl font-semibold'>Dasteen</h4>
-            <p className='text-purple-500 font-medium text-md'>.Blog</p>
+            <h4 className='text-blue-900 text-2xl poppins-semibold'>
+              DevGuide
+            </h4>
+            <p className='text-purple-500 poppins-medium text-md'>.Blog</p>
           </div>
         </div>
         {/* right section */}
@@ -70,7 +72,7 @@ const Navbar = () => {
               <>
                 {loggedInUser ? (
                   <PrimaryButton
-                    onClick={() => navigate('/admin/dashboard')}
+                    onClick={() => navigate('/admin/blogs/new')}
                     text='Go to Dashboard'
                     size='normal'
                     outline

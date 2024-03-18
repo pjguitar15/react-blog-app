@@ -1,4 +1,4 @@
-import HeroImage from '../../../assets/hero-img.png'
+import HeroImage from '../../../assets/hero-img.webp'
 const HeroSection = () => {
   return (
     <section className='bg-gray-100'>
@@ -6,12 +6,14 @@ const HeroSection = () => {
         {/* left side */}
         <div className='poppins-medium'>
           <div className='text-6xl font-semibold text-slate-800'>
-            <h1>Hi, I'm Philcob</h1>
-            <h1>FrontEnd Dev</h1>
+            Unlock Your Coding Potential with{' '}
+            <span className='text-violet-700'>DevGuide.</span>
+            <span className='text-violet-500'>Blog</span>
           </div>
-          <p className='text-slate-500 mt-5 border-l-2 border-slate-500 ps-4 font-normal my-8'>
-            On this blog, I share tips and tricks, frameworks, projects,
-            tutorials, etc. Make sure you subscribe to get the latest updates.
+          <p className='text-slate-500 mt-5 font-normal my-8'>
+            At DevGuide.Blog, we're your ultimate companion on the journey of
+            mastering coding. Join our community of passionate developers and
+            embark on an enriching coding adventure today!
           </p>
           {/* subscribe form */}
           <form className='mt-4'>

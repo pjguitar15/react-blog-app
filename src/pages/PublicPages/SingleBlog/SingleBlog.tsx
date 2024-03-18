@@ -26,7 +26,7 @@ const SingleBlog = () => {
           ))}
         </div>
       </section>
-      <section className='container mx-auto flex gap-8 py-12'>
+      <section className='container mx-auto flex gap-[150px] py-12'>
         <div className='w-4/6'>
           {/* blog content here */}
           <div className='flex gap-2 items-center text-xs mb-6'>

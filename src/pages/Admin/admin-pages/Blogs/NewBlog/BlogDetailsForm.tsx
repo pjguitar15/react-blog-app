@@ -25,6 +25,8 @@ const BlogDetailsForm = () => {
     setSummary,
     selectedFile,
     setSelectedFile,
+    readTime,
+    setReadTime,
   } = useBlogContext()
 
   const handleFileChange = (e: any) => {
@@ -79,6 +81,11 @@ const BlogDetailsForm = () => {
           label='Published on'
           placeholder='March 15, 2024'
           state={[publishDate, setPublishDate]}
+        />
+        <TextInput
+          label='Read time'
+          placeholder='3 mins'
+          state={[readTime, setReadTime]}
         />
         <CheckboxInput
           label='Published'

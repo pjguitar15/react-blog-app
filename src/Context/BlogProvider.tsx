@@ -1,5 +1,6 @@
 import { SetStateAction, useState } from 'react'
 import { BlogContext } from './BlogContext'
+import { ContentDataType } from '../pages/Admin/admin-pages/Blogs/NewBlog/ContentForm'
 
 export type BlogContextType = {
   title: string
@@ -24,6 +25,8 @@ export type BlogContextType = {
   setSummary: React.Dispatch<SetStateAction<string>>
   selectedFile: null
   setSelectedFile: React.Dispatch<SetStateAction<null>>
+  contentData: ContentDataType[]
+  setContentData: React.Dispatch<SetStateAction<ContentDataType[]>>
 }
 
 const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -40,6 +43,15 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
   const [content, setContent] = useState('')
   const [summary, setSummary] = useState('')
   const [selectedFile, setSelectedFile] = useState(null)
+  const [contentData, setContentData] = useState<ContentDataType[]>([
+    { content: 'Please edit this heading', id: 'shn25ay5w', type: 'heading' },
+    {
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio iure deleniti, optio rerum asperiores reiciendis unde incidunt sed at fugit consequatur itaque vero rem animi praesentium quam ea. Autem, laudantium.',
+      id: '04zyavyj6',
+      type: 'paragraph',
+    },
+  ])
 
   const contextValue: BlogContextType = {
     title,
@@ -64,6 +76,8 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     setSummary,
     selectedFile,
     setSelectedFile,
+    contentData,
+    setContentData,
   }
   return (
     <BlogContext.Provider value={contextValue}>{children}</BlogContext.Provider>

@@ -7,12 +7,14 @@ const DeleteConfirmModal = ({
   message,
   deleteHandler,
   loading,
+  title,
 }: {
   open: boolean
   setOpen: React.Dispatch<SetStateAction<boolean>>
-  message: string
-  deleteHandler: () => void
-  loading: boolean
+  message?: string
+  deleteHandler?: () => void
+  loading?: boolean
+  title?: string
 }) => {
   return (
     <div
@@ -27,7 +29,7 @@ const DeleteConfirmModal = ({
       <div className='bg-white rounded-lg shadow-md p-5 z-50 relative w-96'>
         <div className='text-xl poppins-medium flex items-end gap-2 mb-5'>
           <IoIosWarning className='text-yellow-500 text-3xl' />
-          Permanently delete record?
+          {title ? title : 'Permanently delete record?'}
         </div>
         <p className='poppins-regular text-sm mb-5 text-slate-600'>
           {message

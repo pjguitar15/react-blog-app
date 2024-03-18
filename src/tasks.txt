@@ -39,6 +39,8 @@ Blog App Tasks: https://react-blog-app-sand.vercel.app/
 🔸Add text color on sidebar active state
 🔸Add drag component to arrange order in create blog content form using framer motion
 🔸Add lazy loading to images in category
+🔸Add initial date in published on form input
+🔸Fix the image clickable area to replace the image
 
 
 NarXpress

@@ -1,25 +1,71 @@
-import { useRef, useState } from 'react'
+import { SetStateAction, useEffect, useRef, useState } from 'react'
 import { GoPlus } from 'react-icons/go'
 import 'react-quill/dist/quill.snow.css'
+import { useBlogContext } from '../../../../../Context/BlogContext'
+import DeleteConfirmModal from '../../../../../components/DeleteConfirmModal'
 
 const hoverScale = 'hover:scale-105 transition duration-300'
 
-type ContentDataType = {
-  content: string | null
+export type ContentDataType = {
+  id: string
+  content: string | File
   type: string
 }
 
 const ContentForm = () => {
-  const [contentData, setContentData] = useState<ContentDataType[]>([])
+  const [selectedDeleteId, setSelectedDeleteId] = useState<string>('')
+  const [open, setOpen] = useState(false)
   const contentParentRef = useRef<HTMLDivElement>(null)
+  const { contentData, setContentData } = useBlogContext()
+
+  useEffect(() => {
+    if (selectedDeleteId) setOpen(true)
+  }, [selectedDeleteId])
 
   const addContentType = (type: string) => {
-    const newContentData = [...contentData, { content: 'Sample Content', type }]
+    let newContent: string | File
+    if (type === 'heading' || type === 'paragraph') {
+      if (type === 'heading') {
+        newContent = 'Please edit this heading'
+      } else {
+        newContent =
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio iure deleniti, optio rerum asperiores reiciendis unde incidunt sed at fugit consequatur itaque vero rem animi praesentium quam ea. Autem, laudantium.'
+      }
+    } else if (type === 'image') {
+      // Set initial image URL
+      newContent =
+        'https://plus.unsplash.com/premium_photo-1710294627866-6914a34622c8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    } else {
+      throw new Error('Unsupported content type')
+    }
+
+    const newContentData = [
+      ...contentData,
+      { id: generateUniqueId(), content: newContent, type },
+    ]
     setContentData(newContentData)
+  }
+
+  const generateUniqueId = () => {
+    return Math.random().toString(36).substr(2, 9)
+  }
+
+  const deleteHandler = () => {
+    const filter = contentData.filter((item) => item.id !== selectedDeleteId)
+    setContentData(filter)
+    console.log(`Deleting ID: ${selectedDeleteId}`)
+    setOpen(false)
   }
 
   return (
     <main>
+      <DeleteConfirmModal
+        open={open}
+        setOpen={setOpen}
+        deleteHandler={deleteHandler}
+        message={`Are you sure you want to remove this content item?`}
+        title={`Delete Confirmation`}
+      />
       <h2 className='text-md poppins-regular mb-3 mt-4 text-slate-500'>
         Edit your content here
       </h2>
@@ -29,34 +75,17 @@ const ContentForm = () => {
           ref={contentParentRef}
           className='flex flex-col gap-3 bg-white pb-4 pt-3 px-2 shadow rounded-lg'
         >
-          <h2
-            suppressContentEditableWarning={true}
-            contentEditable
-            className={`text-lg poppins-medium text-slate-700 py-2 ps-5 pe-12 rounded-md outline-none relative group hover:bg-slate-100`}
-          >
-            Sample Heading Content
-            <button
-              onClick={() => console.log('test')}
-              className='absolute right-4 top-0 h-full hidden group-hover:flex items-center text-red-400 text-2xl poppins-regular'
-            >
-              ×
-            </button>
-          </h2>
-          <p
-            suppressContentEditableWarning={true}
-            contentEditable
-            className={`poppins-regular text-slate-500 text-sm leading-loose outline-none py-2 ps-5 pe-12 h-auto resize-none group relative hover:bg-slate-100 rounded-md`}
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            unde reprehenderit, recusandae, doloribus voluptas necessitatibus ut
-            cum asperiores cupiditate beatae fuga perferendis ipsam, natus
-            distinctio in consequatur obcaecati? Neque, ullam? lorem
-            <button className='absolute right-3 top-0 h-full hidden group-hover:flex items-center text-red-400 text-2xl'>
-              ×
-            </button>
-          </p>
           {contentData.map((item, index) => (
-            <ContentItem key={index} type={item.type} />
+            <ContentItem
+              key={item.id}
+              item={item}
+              setContent={(newContent: string | File) => {
+                const updatedContentData = [...contentData]
+                updatedContentData[index].content = newContent
+                setContentData(updatedContentData)
+              }}
+              setSelectedDeleteId={setSelectedDeleteId}
+            />
           ))}
           <hr className='w-3/4 mx-auto' />
           <AddButton addContentType={addContentType} />
@@ -74,38 +103,84 @@ const ContentForm = () => {
   )
 }
 
-const ContentItem = ({ type }: { type: string }) => {
-  const [headingContent, setHeadingContent] = useState(
-    'This is a Heading Content'
-  )
+const ContentItem = ({
+  item,
+  setContent,
+  setSelectedDeleteId,
+}: {
+  item: ContentDataType
+  setContent: (newContent: string | File) => void
+  setSelectedDeleteId: React.Dispatch<SetStateAction<string>>
+}) => {
   return (
     <>
-      {type === 'heading' && (
-        <h2
-          suppressContentEditableWarning={true}
-          contentEditable
-          className={`text-lg poppins-medium text-slate-700 py-2 ps-5 pe-12 rounded-md outline-none relative group hover:bg-slate-100`}
-        >
-          {headingContent}
+      {item.type === 'heading' && (
+        <div className='relative group hover:bg-slate-100 py-2 ps-5 pe-12'>
+          <input
+            onChange={(e) => setContent(e.target.value)}
+            className={`text-lg poppins-medium text-slate-700 rounded-md outline-none w-full bg-transparent`}
+            value={item.content as string}
+          />
           <button
-            onClick={() => console.log('test')}
-            className='absolute right-4 top-0 h-full hidden group-hover:flex items-center text-red-400 text-2xl poppins-regular'
+            onClick={() => {
+              setSelectedDeleteId(item.id)
+            }}
+            className='absolute right-4 top-0 h-full hidden group-hover:flex items-center text-red-400 text-2xl poppins-regular hover:scale-150 transition duration-300'
           >
             ×
           </button>
-        </h2>
+        </div>
       )}
-      {type === 'paragraph' && (
-        <p
-          suppressContentEditableWarning={true}
-          contentEditable
-          className={`poppins-regular text-slate-500 text-sm leading-loose outline-none py-2 ps-5 pe-12 h-auto resize-none group relative hover:bg-slate-100 rounded-md`}
-        >
-          {headingContent}
-          <button className='absolute right-3 top-0 h-full hidden group-hover:flex items-center text-red-400 text-2xl'>
+      {item.type === 'paragraph' && (
+        <div className='relative group hover:bg-slate-100 py-2 ps-5 pe-12'>
+          <textarea
+            className={`text-sm poppins-regular text-slate-500 rounded-md outline-none w-full bg-transparent`}
+            value={item.content as string}
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              setSelectedDeleteId(item.id)
+            }}
+            className='absolute right-4 top-0 h-full hidden group-hover:flex items-center text-red-400 text-2xl poppins-regular hover:scale-150 transition duration-300'
+          >
             ×
           </button>
-        </p>
+        </div>
+      )}
+
+      {item.type === 'image' && (
+        <div className='relative group hover:bg-slate-100 py-2 ps-5 pe-12'>
+          <div className='cursor-pointer w-2/4'>
+            <img
+              src={
+                typeof item.content === 'string'
+                  ? item.content
+                  : URL.createObjectURL(item.content)
+              }
+              alt='Image'
+              className='w-full'
+            />
+            <input
+              type='file'
+              onChange={(e) => {
+                const file = e.target.files?.[0]
+                if (file) {
+                  setContent(file)
+                }
+              }}
+              className='absolute inset-0 w-full h-full opacity-0 cursor-pointer'
+            />
+          </div>
+          <button
+            onClick={() => {
+              setSelectedDeleteId(item.id)
+            }}
+            className='absolute right-4 top-0 h-full hidden group-hover:flex items-center text-red-400 text-2xl poppins-regular hover:scale-150 transition duration-300'
+          >
+            ×
+          </button>
+        </div>
       )}
     </>
   )

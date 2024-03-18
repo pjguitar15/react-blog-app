@@ -1,5 +1,5 @@
 import Categories from '../pages/Admin/admin-pages/Categories/Categories'
-import Dashboard from '../pages/Admin/admin-pages/Dashboard'
+import Dashboard from '../pages/Admin/admin-pages/Dashboard/Dashboard'
 import Blogs from '../pages/Admin/admin-pages/Blogs/Blogs'
 import Settings from '../pages/Admin/admin-pages/Settings'
 import Tags from '../pages/Admin/admin-pages/Tags/Tags'

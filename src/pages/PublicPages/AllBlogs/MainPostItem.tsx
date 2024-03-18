@@ -8,7 +8,11 @@ const MainPostItem = () => {
       <h6 className='poppins-regular text-xs text-slate-500 mt-2 mb-3'>
         UI/UX Design
       </h6>
+
       <div className='flex flex-col gap-2'>
+        <span className='text-xs poppins-regular bg-violet-500 px-3 py-1 text-white ms-0 me-auto rounded'>
+          ReactJS
+        </span>
         <Link to='/blog/test' className='poppins-semibold'>
           New year edition: top ux/ui design trends rushing to PH in 2024
         </Link>

@@ -1,7 +1,6 @@
 import { CiFacebook } from 'react-icons/ci'
 import { FaInstagram } from 'react-icons/fa'
 import { RiYoutubeLine } from 'react-icons/ri'
-import { RiTwitterXFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
@@ -28,10 +27,18 @@ const Footer = () => {
 
           {/* Social Media */}
           <div className='grid grid-cols-4 w-2/4 text-2xl text-slate-700'>
-            <CiFacebook />
-            <FaInstagram />
-            <RiYoutubeLine />
-            <RiTwitterXFill />
+            <a href='https://www.facebook.com/philcobsuzuki/' target='_blank'>
+              <CiFacebook />
+            </a>
+            <a href='https://www.instagram.com/philcobsuzuki/' target='_blank'>
+              <FaInstagram />
+            </a>
+            <a
+              href='https://www.youtube.com/channel/UCHU5arYldtTFq_PtEWI-ppQ'
+              target='_blank'
+            >
+              <RiYoutubeLine />
+            </a>
           </div>
         </div>
         {/* right */}

@@ -4,7 +4,7 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase/firebaseConfig'
 import { TbCategory } from 'react-icons/tb'
 import { TbWriting } from 'react-icons/tb'
-import { IoPricetagOutline } from 'react-icons/io5'
+// import { IoPricetagOutline } from 'react-icons/io5'
 import { FaRegUser } from 'react-icons/fa'
 import { CiSettings } from 'react-icons/ci'
 import { CiLogout } from 'react-icons/ci'
@@ -14,27 +14,27 @@ import { Link } from 'react-router-dom'
 const TEST_LINKS = [
   {
     title: 'dashboard',
-    icon: <AiOutlineDashboard className='text-slate-500' />,
+    icon: <AiOutlineDashboard className='text-slate-500 icon' />,
   },
   {
     title: 'blogs',
-    icon: <TbWriting className='text-slate-500' />,
+    icon: <TbWriting className='text-slate-500 icon' />,
   },
   {
     title: 'categories',
-    icon: <TbCategory className='text-slate-500' />,
+    icon: <TbCategory className='text-slate-500 icon' />,
   },
-  {
-    title: 'tags',
-    icon: <IoPricetagOutline className='text-slate-500' />,
-  },
+  // {
+  //   title: 'tags',
+  //   icon: <IoPricetagOutline className='text-slate-500' />,
+  // },
   {
     title: 'users',
-    icon: <FaRegUser className='text-slate-500' />,
+    icon: <FaRegUser className='text-slate-500 icon' />,
   },
   {
     title: 'settings',
-    icon: <CiSettings className='text-slate-500' />,
+    icon: <CiSettings className='text-slate-500 icon' />,
   },
 ]
 

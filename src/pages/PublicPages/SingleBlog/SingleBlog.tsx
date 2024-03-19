@@ -4,6 +4,8 @@ import { TEST_CONTENT } from './TEST_CONTENT'
 import { PiMagnifyingGlassLight } from 'react-icons/pi'
 import HeroDetailItem from './HeroDetailItem'
 import RecentPostItem from './RecentPostItem'
+import { MdSend } from 'react-icons/md'
+import Comment from './Comment'
 
 const SingleBlog = () => {
   return (
@@ -89,6 +91,31 @@ const SingleBlog = () => {
                     </h6>
                   ))}
                 </div>
+              </div>
+            </div>
+            <hr />
+            {/* Comment Section */}
+            <div>
+              <div className='flex gap-3 items-center mb-3'>
+                <div className='bg-orange-300 h-0.5 w-4'></div>
+                <h6 className='poppins-regular text-sm text-slate-500'>
+                  Comments
+                </h6>
+              </div>
+              <div className='bg-slate-100 rounded-lg border relative overflow-hidden'>
+                <input
+                  className='outline-none border-0 bg-transparent focus:bg-white px-7 py-3 w-full'
+                  placeholder='Leave a constructive comment..'
+                  type='text'
+                />
+                <button className='absolute h-full right-0 top-0 px-4 flex items-center bg-blue-200 hover:bg-blue-500 hover:text-white transition duration-300'>
+                  <MdSend className='text-2xl' />
+                </button>
+              </div>
+              <div className='flex flex-col gap-4 py-5'>
+                <Comment />
+                <Comment />
+                <Comment />
               </div>
             </div>
           </div>

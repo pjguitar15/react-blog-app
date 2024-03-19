@@ -2,10 +2,14 @@
 
 .admin-link-active {
   border-left: solid 4px #6d28d9;
-
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-style: normal;
+}
+
+.admin-link-active > h5,
+.admin-link-active > .icon {
+  color: #7f00ff;
 }
 
 .nav-active {

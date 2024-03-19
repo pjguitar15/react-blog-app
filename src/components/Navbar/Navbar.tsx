@@ -52,7 +52,7 @@ const Navbar = () => {
                   isPending ? 'pending' : isActive ? 'nav-active' : ''
                 }
               >
-                About me
+                About the App
               </NavLink>
             </li>
           </ul>

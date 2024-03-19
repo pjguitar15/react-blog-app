@@ -1,9 +1,9 @@
 const About = () => {
   const STAT_BLOCK_CONTENT = [
-    { number: '3.5', description: 'Years of Experience' },
-    { number: '23', description: 'Project Challenge' },
+    { number: '132', description: 'Articles Created' },
     { number: '830+', description: 'Positive Reviews' },
-    { number: '100K', description: 'Trusted Blogs' },
+    { number: '300+', description: 'Users' },
+    { number: '100', description: 'Trusted Blogs' },
   ]
 
   const StatBlocks = ({
@@ -29,18 +29,28 @@ const About = () => {
           <div className='flex flex-col justify-between'>
             <div>
               <p className='text-orange-500 font-semibold capitalize mb-3'>
-                How it Started
+                What Our App Do
               </p>
               <h2 className='text-4xl poppins-semibold mb-3'>
-                Our Dream is Global Learning Transformation
+                Your Ultimate Destination for Hassle-Free Blog Creation!
               </h2>
             </div>
-            <p className='text-slate-500'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-              veniam veritatis voluptatem rerum velit incidunt perferendis,
-              labore voluptatibus porro id tenetur iste, nam necessitatibus
-              reprehenderit nostrum. Qui numquam atque excepturi?
-            </p>
+            <div className='flex flex-col gap-6'>
+              <p className='text-slate-500'>
+                At DevGuideBlog, we understand the importance of sharing your
+                thoughts, experiences, and expertise with the world. That's why
+                we've designed an intuitive and efficient blog app that empowers
+                users to create their own blogs in no time.
+              </p>
+              <p className='text-slate-500'>
+                Whether you're a seasoned developer, a budding entrepreneur, or
+                an avid hobbyist, DevGuideBlog is your go-to platform for
+                expressing yourself and connecting with like-minded individuals.
+                With our user-friendly interface and customizable features, you
+                can effortlessly design and publish captivating blog posts that
+                reflect your unique style and personality.
+              </p>
+            </div>
           </div>
         </div>
         <div className='flex gap-7'>

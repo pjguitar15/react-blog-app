@@ -2,6 +2,7 @@ import TextInput from './TextInput'
 import CheckboxInput from './CheckboxInput'
 import { useBlogContext } from '../../../../../Context/BlogContext'
 import { GoPlus } from 'react-icons/go'
+import { useGetAllCategories } from '../../../../../helpers/hooks/useGetAllCategories'
 
 const BlogDetailsForm = () => {
   const {
@@ -33,7 +34,7 @@ const BlogDetailsForm = () => {
     setSelectedFile(e.target.files[0])
   }
 
-  const CATEGORIES = ['Category 1', 'Category 2', 'Category 3']
+  const { allCategories, isCategoriesLoading } = useGetAllCategories()
 
   return (
     <div className='py-4 px-7 bg-white border shadow-sm rounded-lg grid grid-cols-2 gap-5'>
@@ -52,11 +53,17 @@ const BlogDetailsForm = () => {
             onChange={(e) => setCategory(e.target.value)}
             className='bg-gray-100 px-4 rounded py-2 outline-none'
           >
-            {CATEGORIES.map((item, index) => (
-              <option className='capitalize' key={index} value={item}>
-                {item}
-              </option>
-            ))}
+            <option className='capitalize'>Select a Category</option>
+            {!isCategoriesLoading &&
+              allCategories?.map((item: any, index) => (
+                <option
+                  className='capitalize'
+                  key={index}
+                  value={item.category}
+                >
+                  {item.category}
+                </option>
+              ))}
           </select>
         </div>
         <TextInput
@@ -64,11 +71,24 @@ const BlogDetailsForm = () => {
           placeholder='Elon Musk'
           state={[author, setAuthor]}
         />
-        <TextInput
-          label='Route'
-          placeholder='/this-is-my-blog'
-          state={[route, setRoute]}
-        />
+        <div className='flex flex-col gap-1 py-2'>
+          <div className='text-sm poppins-regular text-gray-500'>
+            Route <span className='text-red-500'>*</span>
+          </div>
+          <input
+            value={route}
+            onChange={(e) => {
+              const inputValue = e.target.value.trim()
+              const regex = /^[a-zA-Z0-9_/-]*$/ // Regular expression to allow alphanumeric characters, underscores, forward slashes, and dashes
+              if (regex.test(inputValue)) {
+                setRoute(inputValue)
+              }
+            }}
+            className='bg-gray-100 px-4 rounded py-2 outline-none'
+            type='text'
+            placeholder={'/my-blog-post'}
+          />
+        </div>
         <TextInput
           label='Summary'
           placeholder='Brief introduction about your article'
@@ -79,7 +99,7 @@ const BlogDetailsForm = () => {
       <div>
         <TextInput
           label='Published on'
-          placeholder='March 15, 2024'
+          placeholder={'March 14, 2024'}
           state={[publishDate, setPublishDate]}
         />
         <TextInput

@@ -2,23 +2,62 @@ import { FaRegSave } from 'react-icons/fa'
 import BlogDetailsForm from './BlogDetailsForm'
 import ContentForm from './ContentForm'
 import { useBlogContext } from '../../../../../Context/BlogContext'
+import AreYouSureModal from '../../../../../components/AreYouSureModal'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const NewBlog = () => {
-  const { handleSave, validationError } = useBlogContext()
+  const {
+    handleSave,
+    validationError,
+    reset,
+    setValidationError,
+    isFormEmpty,
+  } = useBlogContext()
+  const [open, setOpen] = useState(false)
+  const navigate = useNavigate()
+
+  const cancelHandler = () => {
+    setOpen(false)
+    reset()
+    navigate('/admin/blogs')
+    setValidationError('')
+  }
   return (
     <main className='bg-slate-100 w-full p-7 max-h-screen overflow-y-scroll'>
+      <AreYouSureModal
+        open={open}
+        setOpen={setOpen}
+        handler={cancelHandler}
+        title='Confirm Dialog'
+        message='Are you sure you want to discard all your changes?'
+      />
       <div className='flex justify-between font-semibold mb-4'>
         <div className='flex items-center gap-3'>
           <h5 className='text-lg'>New Blog Post</h5>
           <div className='bg-slate-800 h-0.5 w-9 mt-1'></div>
         </div>
-        <button
-          onClick={handleSave}
-          className='flex items-center gap-2 bg-violet-500 hover:bg-violet-600 hover:scale-105 transition duration-300 text-white px-4 rounded-lg py-2'
-        >
-          <FaRegSave className='text-xl' />
-          <h5 className='text-md'>Save</h5>
-        </button>
+        <div className='flex gap-5 items-center'>
+          <button
+            onClick={handleSave}
+            className='flex items-center gap-2 bg-violet-500 hover:bg-violet-600 hover:scale-105 transition duration-300 text-white px-4 rounded-lg py-2'
+          >
+            <FaRegSave className='text-xl' />
+            <h5 className='text-md'>Save</h5>
+          </button>
+          <button
+            onClick={() => {
+              if (isFormEmpty) {
+                navigate('/admin/blogs')
+              } else {
+                setOpen(true)
+              }
+            }}
+            className='poppins-regular text-violet-500 hover:text-violet-700 text-sm flex gap-2 items-center'
+          >
+            Cancel
+          </button>
+        </div>
       </div>
       <div className='flex flex-col gap-3'>
         {validationError && (

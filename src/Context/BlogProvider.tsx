@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from 'react'
+import { SetStateAction, useEffect, useState } from 'react'
 import { BlogContext } from './BlogContext'
 import { ContentDataType } from '../pages/Admin/admin-pages/Blogs/NewBlog/ContentForm'
 import { format } from 'date-fns'
@@ -32,6 +32,10 @@ export type BlogContextType = {
   setReadTime: React.Dispatch<SetStateAction<string>>
   handleSave: () => void
   validationError: string
+  setValidationError: React.Dispatch<SetStateAction<string>>
+  isUserEditing: boolean
+  reset: () => void
+  isFormEmpty: boolean
 }
 
 // Get the current date
@@ -65,17 +69,63 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     },
   ])
 
-  const handleSave = () => {
-    const hasEmptyFields =
-      title === '' ||
-      route === '' ||
-      category === '' ||
-      summary === '' ||
-      readTime === '' ||
-      author === '' ||
-      selectedFile === null ||
-      publishDate === ''
+  const hasEmptyFields =
+    title === '' ||
+    route === '' ||
+    category === '' ||
+    summary === '' ||
+    readTime === '' ||
+    author === '' ||
+    selectedFile === null ||
+    publishDate === ''
 
+  const isUserEditing =
+    title !== '' ||
+    route !== '' ||
+    category !== 'Select a Category' ||
+    summary !== '' ||
+    readTime !== '' ||
+    author !== '' ||
+    selectedFile !== null
+
+  const isFormEmpty =
+    title === '' &&
+    route === '' &&
+    category === 'Select a Category' &&
+    summary === '' &&
+    readTime === '' &&
+    author === '' &&
+    selectedFile === null
+
+  useEffect(() => {
+    // removes the validation error when user completes the form after getting a validation error
+    if (!hasEmptyFields) {
+      setValidationError('')
+    }
+  }, [
+    title,
+    author,
+    publishDate,
+    route,
+    category,
+    summary,
+    readTime,
+    selectedFile,
+    hasEmptyFields,
+  ])
+
+  const reset = () => {
+    setTitle('')
+    setAuthor('')
+    setPublishDate('')
+    setRoute('')
+    setCategory('')
+    setSummary('')
+    setReadTime('')
+    setSelectedFile(null)
+  }
+
+  const handleSave = () => {
     if (hasEmptyFields) {
       setValidationError(
         `We can't process this yet. Please complete all fields and hit save again.`
@@ -128,6 +178,10 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     setReadTime,
     handleSave,
     validationError,
+    setValidationError,
+    isUserEditing,
+    reset,
+    isFormEmpty,
   }
   return (
     <BlogContext.Provider value={contextValue}>{children}</BlogContext.Provider>

@@ -90,14 +90,7 @@ const ContentForm = () => {
           <hr className='w-3/4 mx-auto' />
           <AddButton addContentType={addContentType} />
         </div>
-        <button
-          onClick={() => {
-            console.log(contentData)
-          }}
-          className='bg-blue-500 mx-auto px-3 py-1 rounded text-white'
-        >
-          Check
-        </button>
+        
       </div>
     </main>
   )
@@ -134,7 +127,7 @@ const ContentItem = ({
       {item.type === 'paragraph' && (
         <div className='relative group hover:bg-slate-100 py-2 ps-5 pe-12'>
           <textarea
-            className={`text-sm poppins-regular text-slate-500 rounded-md outline-none w-full bg-transparent`}
+            className={`text-sm poppins-regular text-slate-500 rounded-md outline-none w-full bg-transparent overflow-x-hidden resize-none min-h-[120px] leading-loose`}
             value={item.content as string}
             onChange={(e) => setContent(e.target.value)}
           />

@@ -1,14 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaCirclePlus } from 'react-icons/fa6'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import { MdContentCopy } from 'react-icons/md'
 import { TEST_ROW_DATA } from './testData'
 import Pagination from '../../../../components/Pagination'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useBlogContext } from '../../../../Context/BlogContext'
 
 const Blogs = () => {
   const itemsPerPage = 8 // You can adjust this value based on your preference.
   const [currentPage, setCurrentPage] = useState(1)
+  const { isUserEditing } = useBlogContext()
+  const navigate = useNavigate()
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
@@ -18,6 +21,10 @@ const Blogs = () => {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   )
+
+  useEffect(() => {
+    if (isUserEditing) navigate('/admin/blogs/new')
+  }, [])
 
   return (
     <main className='bg-slate-100 w-full p-7'>

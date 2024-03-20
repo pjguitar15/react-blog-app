@@ -1,44 +1,10 @@
-import { SetStateAction, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BlogContext } from './BlogContext'
 import { ContentDataType } from '../pages/Admin/admin-pages/Blogs/NewBlog/ContentForm'
 import { format } from 'date-fns'
+import { BlogContextType } from './BlogProviderType'
+import { processContentData, resetFields } from './useBlogProviderFunctions'
 
-export type BlogContextType = {
-  title: string
-  setTitle: React.Dispatch<SetStateAction<string>>
-  author: string
-  setAuthor: React.Dispatch<SetStateAction<string>>
-  publishDate: string
-  setPublishDate: React.Dispatch<SetStateAction<string>>
-  route: string
-  setRoute: React.Dispatch<SetStateAction<string>>
-  category: string
-  setCategory: React.Dispatch<SetStateAction<string>>
-  isPublished: boolean
-  setIsPublished: React.Dispatch<SetStateAction<boolean>>
-  isFeatured: boolean
-  setIsFeatured: React.Dispatch<SetStateAction<boolean>>
-  isCommentsDisabled: boolean
-  setIsCommentsDisabled: React.Dispatch<SetStateAction<boolean>>
-  content: string
-  setContent: React.Dispatch<SetStateAction<string>>
-  summary: string
-  setSummary: React.Dispatch<SetStateAction<string>>
-  selectedFile: null
-  setSelectedFile: React.Dispatch<SetStateAction<null>>
-  contentData: ContentDataType[]
-  setContentData: React.Dispatch<SetStateAction<ContentDataType[]>>
-  readTime: string
-  setReadTime: React.Dispatch<SetStateAction<string>>
-  handleSave: () => void
-  validationError: string
-  setValidationError: React.Dispatch<SetStateAction<string>>
-  isUserEditing: boolean
-  reset: () => void
-  isFormEmpty: boolean
-}
-
-// Get the current date
 const currentDate = new Date()
 
 const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -57,8 +23,9 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
   const [content, setContent] = useState('')
   const [summary, setSummary] = useState('')
   const [readTime, setReadTime] = useState('')
-  const [selectedFile, setSelectedFile] = useState(null)
+  const [selectedFile, setSelectedFile] = useState<any>(null)
   const [validationError, setValidationError] = useState('')
+  const [uploadLoading, setUploadLoading] = useState(false)
   const [contentData, setContentData] = useState<ContentDataType[]>([
     { content: 'Please edit this heading', id: 'shn25ay5w', type: 'heading' },
     {
@@ -72,7 +39,7 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
   const hasEmptyFields =
     title === '' ||
     route === '' ||
-    category === '' ||
+    category === 'Select a Category' ||
     summary === '' ||
     readTime === '' ||
     author === '' ||
@@ -97,8 +64,8 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     author === '' &&
     selectedFile === null
 
+  // * Removes the validation error when user completes the form after getting a validation error
   useEffect(() => {
-    // removes the validation error when user completes the form after getting a validation error
     if (!hasEmptyFields) {
       setValidationError('')
     }
@@ -115,17 +82,19 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
   ])
 
   const reset = () => {
-    setTitle('')
-    setAuthor('')
-    setPublishDate('')
-    setRoute('')
-    setCategory('')
-    setSummary('')
-    setReadTime('')
-    setSelectedFile(null)
+    resetFields(
+      setTitle,
+      setAuthor,
+      setPublishDate,
+      setRoute,
+      setCategory,
+      setSummary,
+      setReadTime,
+      setSelectedFile
+    )
   }
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (hasEmptyFields) {
       setValidationError(
         `We can't process this yet. Please complete all fields and hit save again.`
@@ -134,19 +103,16 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     }
 
     setValidationError(``)
-    console.log({
-      title,
-      route,
-      category,
-      summary,
-      author,
-      publishDate,
-      readTime,
-      selectedFile,
-      isPublished,
-      isFeatured,
-      isCommentsDisabled,
-    })
+
+    // Upload Process
+    // STEP 1: Modify content array so image content will be strings
+    setUploadLoading(true)
+    const modifiedContentData = await processContentData(contentData)
+    console.log('test', modifiedContentData)
+    setUploadLoading(false)
+
+    // TODO: Create the next step here
+    // next step here
   }
 
   const contextValue: BlogContextType = {
@@ -182,6 +148,7 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     isUserEditing,
     reset,
     isFormEmpty,
+    uploadLoading,
   }
   return (
     <BlogContext.Provider value={contextValue}>{children}</BlogContext.Provider>

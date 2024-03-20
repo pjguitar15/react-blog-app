@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react'
-import { BlogContextType } from './BlogProvider'
+import { BlogContextType } from './BlogProviderType'
 
 const BlogContext = createContext<BlogContextType | undefined>(undefined)
 

@@ -8,7 +8,7 @@ const hoverScale = 'hover:scale-105 transition duration-300'
 
 export type ContentDataType = {
   id: string
-  content: string | File
+  content: any
   type: string
 }
 
@@ -32,9 +32,7 @@ const ContentForm = () => {
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio iure deleniti, optio rerum asperiores reiciendis unde incidunt sed at fugit consequatur itaque vero rem animi praesentium quam ea. Autem, laudantium.'
       }
     } else if (type === 'image') {
-      // Set initial image URL
-      newContent =
-        'https://plus.unsplash.com/premium_photo-1710294627866-6914a34622c8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      newContent = '' // Set newContent to empty string for image
     } else {
       throw new Error('Unsupported content type')
     }
@@ -51,7 +49,9 @@ const ContentForm = () => {
   }
 
   const deleteHandler = () => {
-    const filter = contentData.filter((item) => item.id !== selectedDeleteId)
+    const filter = contentData.filter(
+      (item: any) => item.id !== selectedDeleteId
+    )
     setContentData(filter)
     console.log(`Deleting ID: ${selectedDeleteId}`)
     setOpen(false)
@@ -75,7 +75,7 @@ const ContentForm = () => {
           ref={contentParentRef}
           className='flex flex-col gap-3 bg-white pb-4 pt-3 px-2 shadow rounded-lg'
         >
-          {contentData.map((item, index) => (
+          {contentData.map((item: any, index: number) => (
             <ContentItem
               key={item.id}
               item={item}
@@ -90,7 +90,6 @@ const ContentForm = () => {
           <hr className='w-3/4 mx-auto' />
           <AddButton addContentType={addContentType} />
         </div>
-        
       </div>
     </main>
   )
@@ -144,27 +143,29 @@ const ContentItem = ({
 
       {item.type === 'image' && (
         <div className='relative group hover:bg-slate-100 py-2 ps-5 pe-12'>
-          <div className='cursor-pointer w-2/4'>
+          {item.content === '' ? (
+            <div className='cursor-pointer w-2/4 flex items-center justify-center bg-blue-200 rounded-md outline-none text-sm text-blue-900 py-2 px-4 hover:bg-blue-300'>
+              <input
+                type='file'
+                onChange={(e) => {
+                  const file = e.target.files?.[0]
+                  if (file) {
+                    setContent(file)
+                  }
+                }}
+                className='absolute inset-0 w-full h-full opacity-0 cursor-pointer'
+              />
+              Import an image
+            </div>
+          ) : typeof item.content === 'string' ? (
+            <img src={item.content} alt='Image' className='w-full' />
+          ) : (
             <img
-              src={
-                typeof item.content === 'string'
-                  ? item.content
-                  : URL.createObjectURL(item.content)
-              }
+              src={URL.createObjectURL(item.content)}
               alt='Image'
-              className='w-full'
+              className='w-1/2'
             />
-            <input
-              type='file'
-              onChange={(e) => {
-                const file = e.target.files?.[0]
-                if (file) {
-                  setContent(file)
-                }
-              }}
-              className='absolute inset-0 w-full h-full opacity-0 cursor-pointer'
-            />
-          </div>
+          )}
           <button
             onClick={() => {
               setSelectedDeleteId(item.id)

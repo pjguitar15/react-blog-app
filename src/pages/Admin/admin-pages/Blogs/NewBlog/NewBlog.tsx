@@ -13,6 +13,7 @@ const NewBlog = () => {
     reset,
     setValidationError,
     isFormEmpty,
+    uploadLoading,
   } = useBlogContext()
   const [open, setOpen] = useState(false)
   const navigate = useNavigate()
@@ -40,7 +41,8 @@ const NewBlog = () => {
         <div className='flex gap-5 items-center'>
           <button
             onClick={handleSave}
-            className='flex items-center gap-2 bg-violet-500 hover:bg-violet-600 hover:scale-105 transition duration-300 text-white px-4 rounded-lg py-2'
+            disabled={uploadLoading}
+            className={`flex items-center disabled:opacity-50 disabled:cursor-not-allowed gap-2 bg-violet-500 hover:bg-violet-600 hover:scale-105 transition duration-300 text-white px-4 rounded-lg py-2`}
           >
             <FaRegSave className='text-xl' />
             <h5 className='text-md'>Save</h5>

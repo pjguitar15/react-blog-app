@@ -5,14 +5,14 @@ Blog App Tasks: https://react-blog-app-sand.vercel.app/
 🔸Add content form into validation ✅
 🔸Add a firestore create handler for this payload ✅
 🔸Finish New Blog Post! ✅
-🔸Fix the image clickable area to replace the image
-🔸Add thumbnail version of featured image to blog form
-🔸Remove Create Blog Global State when user clicks logout
-🔸Add nice purple background design on login and register page
-🔸Display loggedOnUser name on admin sidebar
-🔸Increase font size of sidebar
-🔸Update dashboard logo
-🔸Sign in and Protected page logic should now go to Dashboard
+🔸Add thumbnail version of featured image to blog form (couldn't do it) ❌
+🔸Reset Add Blog States when user clicks logout ✅
+🔸Display loggedOnUser name on admin sidebar ✅
+🔸Increase font size of sidebar ✅
+🔸Update dashboard logo ✅
+🔸Sign in and Protected page logic should now go to Dashboard ✅
+🔸Display blog post to public blog page
+🔸Display blog by ID in Single Blog page
 🔸Add code component in blog post
 🔸Add 'Continue Writing Post' button above Go to Homepage
 🔸Add drag component to arrange order in create blog content form using framer motion
@@ -23,10 +23,10 @@ Blog App Tasks: https://react-blog-app-sand.vercel.app/
 🔸Add blog request link on sidebar when 'master' is logged in
 🔸Create an inital settings page UI
 🔸Clean Blog Provider code
-🔸Display blog post to public blog page
-🔸Display blog by ID in Single Blog page
 🔸Make the categories dynamic in All Blogs Page
 🔸Work on filter functionality on catogeries section
+🔸Remove sidebar, when user is Adding a blog post
+🔸Add nice purple background design on login and register page
 
 
 

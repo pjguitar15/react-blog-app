@@ -10,6 +10,8 @@ import { CiSettings } from 'react-icons/ci'
 import { CiLogout } from 'react-icons/ci'
 import { GoHome } from 'react-icons/go'
 import { Link } from 'react-router-dom'
+import { useBlogContext } from '../../Context/BlogContext'
+import { useAuthContext } from '../../Context/AuthContext'
 
 const TEST_LINKS = [
   {
@@ -39,17 +41,27 @@ const TEST_LINKS = [
 ]
 
 const AdminSidebar = () => {
+  const { reset } = useBlogContext()
+  const { loggedInUser } = useAuthContext()
   return (
-    <div className='h-screen w-1/5 border-r border-gray-200 flex flex-col'>
-      <div className='p-4'>
-        <div className='size-10 rounded-full bg-violet-700 mx-auto'></div>
-        <div className='flex justify-center items-end cursor-pointer mx-auto'>
-          <h4 className='text-blue-900 text-2xl font-semibold'>Dasteen</h4>
-          <p className='text-purple-500 font-medium text-md'>.Blog</p>
+    <div className='h-screen lg:w-2/5 xl:w-1/5 border-r border-gray-200 flex flex-col'>
+      <div className='px-4 py-8'>
+        <div className='flex w-full justify-center'>
+          <div className='flex items-end cursor-pointer'>
+            <h4 className='text-blue-900 text-2xl poppins-semibold'>
+              DevGuide
+            </h4>
+            <p className='text-purple-500 poppins-medium text-lg'>.Blog</p>
+          </div>
         </div>
         <p className='text-xs text-slate-500 text-center poppins-regular'>
           v1.0
         </p>
+        <div className='w-full flex justify-center py-3 bg-slate-100 rounded-lg border mt-3'>
+          <h6 className='poppins-regular text-sm'>
+            Hello, {loggedInUser?.displayName} 👋
+          </h6>
+        </div>
       </div>
 
       <div>
@@ -62,6 +74,7 @@ const AdminSidebar = () => {
               .then(() => {
                 // Sign-out successful.
                 console.log('Sign out success')
+                reset()
               })
               .catch((error) => {
                 // An error happened.

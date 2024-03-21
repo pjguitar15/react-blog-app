@@ -6,15 +6,14 @@ import { onAuthStateChanged } from 'firebase/auth'
 const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [loggedInUser, setLoggedInUser] = useState<string | undefined>('')
+  const [loggedInUser, setLoggedInUser] = useState<any | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       try {
         if (user) {
-          const uid = user.uid
-          setLoggedInUser(uid)
+          setLoggedInUser(user)
         } else {
           setLoggedInUser('')
         }

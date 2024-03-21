@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react'
 
 interface MyContextType {
-  loggedInUser: string | undefined
+  loggedInUser: any
   loading: boolean
 }
 

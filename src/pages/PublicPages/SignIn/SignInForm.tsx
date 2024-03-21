@@ -38,7 +38,7 @@ const SignInForm: React.FC<{
       {loginSuccess && (
         <SuccessModal
           message='Successfully logged in!'
-          action={() => navigate('/admin/blogs/new')}
+          action={() => navigate('/admin/dashboard')}
         />
       )}
       <form

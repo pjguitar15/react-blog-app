@@ -2,10 +2,11 @@ import { useState } from 'react'
 import PrimaryButton from '../../../components/PrimaryButton.tsx'
 import SuccessModal from '../../../components/SuccessModal.tsx'
 import { Link, useNavigate } from 'react-router-dom'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../../../firebase/firebaseConfig.ts'
 const RegisterForm = () => {
   const [emailInput, setEmailInput] = useState('')
+  const [displayName, setDisplayName] = useState('')
   const [passwordInput, setPasswordInput] = useState('')
   const [confirmPasswordInput, setConfirmPasswordInput] = useState('')
   const [error, setError] = useState('')
@@ -28,7 +29,13 @@ const RegisterForm = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user
-          console.log(user)
+
+          // Update the user's display name
+          return updateProfile(user, {
+            displayName,
+          })
+        })
+        .then(() => {
           setError('')
           setLoginSuccess(true)
         })
@@ -68,6 +75,13 @@ const RegisterForm = () => {
           value={emailInput}
           onChange={(e) => setEmailInput(e.target.value)}
           placeholder='Enter your email'
+          type='text'
+        />
+        <input
+          className='bg-gray-100 px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm'
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
+          placeholder='Enter your display name'
           type='text'
         />
         <input

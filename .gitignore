@@ -14,7 +14,7 @@ dist-ssr
 
 
 # Editor directories and files
-.src/tasks.txt
+/src/tasks.txt
 .vscode/*
 !.vscode/extensions.json
 .idea

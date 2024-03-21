@@ -9,6 +9,7 @@ import {
   resetFields,
   uploadFeaturedImage,
 } from './useBlogProviderFunctions'
+import { useUploadToFirestore } from '../helpers/hooks/useUploadToFirestore'
 
 const currentDate = new Date()
 
@@ -33,8 +34,9 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
   const [uploadLoading, setUploadLoading] = useState(false)
   const [contentData, setContentData] =
     useState<ContentDataType[]>(defaultContentData)
-
   const [successMessage, setSuccessMessage] = useState('')
+
+  const { uploadPayload } = useUploadToFirestore()
 
   const hasEmptyFields =
     title === '' ||
@@ -136,7 +138,12 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     console.log('Payload', payload)
     console.log('Done!')
 
-    // Step 4: Display Success/Fail Message and Reset Form
+    // Step 4: Upload payload to
+    console.log('Uploading payload to firestore...')
+    await uploadPayload('blogs', payload)
+    console.log('Upload done!')
+
+    // Last Step: Display Success/Fail Message and Reset Form
     setSuccessMessage(`You have successfully uploaded the blog.`)
     reset()
   }

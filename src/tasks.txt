@@ -4,7 +4,7 @@ Blog App Tasks: https://react-blog-app-sand.vercel.app/
 🔸Make the initial dummy paragraph longer on textarea ✅
 🔸Add content form into validation ✅
 🔸Add a firestore create handler for this payload ✅
-🔸Finish New Blog Post!
+🔸Finish New Blog Post! ✅
 🔸Fix the image clickable area to replace the image
 🔸Add thumbnail version of featured image to blog form
 🔸Remove Create Blog Global State when user clicks logout
@@ -23,6 +23,11 @@ Blog App Tasks: https://react-blog-app-sand.vercel.app/
 🔸Add blog request link on sidebar when 'master' is logged in
 🔸Create an inital settings page UI
 🔸Clean Blog Provider code
+🔸Display blog post to public blog page
+🔸Display blog by ID in Single Blog page
+🔸Make the categories dynamic in All Blogs Page
+🔸Work on filter functionality on catogeries section
+
 
 
 NarXpress

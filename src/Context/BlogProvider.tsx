@@ -3,7 +3,12 @@ import { BlogContext } from './BlogContext'
 import { ContentDataType } from '../pages/Admin/admin-pages/Blogs/NewBlog/ContentForm'
 import { format } from 'date-fns'
 import { BlogContextType } from './BlogProviderType'
-import { processContentData, resetFields } from './useBlogProviderFunctions'
+import {
+  defaultContentData,
+  processContentData,
+  resetFields,
+  uploadFeaturedImage,
+} from './useBlogProviderFunctions'
 
 const currentDate = new Date()
 
@@ -23,18 +28,13 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
   const [content, setContent] = useState('')
   const [summary, setSummary] = useState('')
   const [readTime, setReadTime] = useState('')
-  const [selectedFile, setSelectedFile] = useState<any>(null)
+  const [featuredImage, setFeaturedImage] = useState<any>(null)
   const [validationError, setValidationError] = useState('')
   const [uploadLoading, setUploadLoading] = useState(false)
-  const [contentData, setContentData] = useState<ContentDataType[]>([
-    { content: 'Please edit this heading', id: 'shn25ay5w', type: 'heading' },
-    {
-      content:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio iure deleniti, optio rerum asperiores reiciendis unde incidunt sed at fugit consequatur itaque vero rem animi praesentium quam ea. Autem, laudantium.',
-      id: '04zyavyj6',
-      type: 'paragraph',
-    },
-  ])
+  const [contentData, setContentData] =
+    useState<ContentDataType[]>(defaultContentData)
+
+  const [successMessage, setSuccessMessage] = useState('')
 
   const hasEmptyFields =
     title === '' ||
@@ -43,7 +43,7 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     summary === '' ||
     readTime === '' ||
     author === '' ||
-    selectedFile === null ||
+    featuredImage === null ||
     publishDate === ''
 
   const isUserEditing =
@@ -53,7 +53,8 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     summary !== '' ||
     readTime !== '' ||
     author !== '' ||
-    selectedFile !== null
+    featuredImage !== null ||
+    contentData.length > 2
 
   const isFormEmpty =
     title === '' &&
@@ -62,7 +63,8 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     summary === '' &&
     readTime === '' &&
     author === '' &&
-    selectedFile === null
+    featuredImage === null &&
+    contentData === defaultContentData
 
   // * Removes the validation error when user completes the form after getting a validation error
   useEffect(() => {
@@ -77,7 +79,7 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     category,
     summary,
     readTime,
-    selectedFile,
+    featuredImage,
     hasEmptyFields,
   ])
 
@@ -90,7 +92,8 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
       setCategory,
       setSummary,
       setReadTime,
-      setSelectedFile
+      setFeaturedImage,
+      setContentData
     )
   }
 
@@ -108,11 +111,34 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     // STEP 1: Modify content array so image content will be strings
     setUploadLoading(true)
     const modifiedContentData = await processContentData(contentData)
-    console.log('test', modifiedContentData)
+    console.log('Step 1: ', modifiedContentData)
+
+    // STEP 2: Upload featuredImage
+    const featuredImageURL = await uploadFeaturedImage(featuredImage)
+    console.log('Step 2:', featuredImageURL)
     setUploadLoading(false)
 
-    // TODO: Create the next step here
-    // next step here
+    // Step 3: Create payload object
+    const payload = {
+      content: modifiedContentData,
+      title,
+      author,
+      publishDate,
+      route,
+      category,
+      isPublished,
+      isFeatured,
+      isCommentsDisabled,
+      summary,
+      readTime,
+      featuredImage: featuredImageURL,
+    }
+    console.log('Payload', payload)
+    console.log('Done!')
+
+    // Step 4: Display Success/Fail Message and Reset Form
+    setSuccessMessage(`You have successfully uploaded the blog.`)
+    reset()
   }
 
   const contextValue: BlogContextType = {
@@ -136,8 +162,8 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     setContent,
     summary,
     setSummary,
-    selectedFile,
-    setSelectedFile,
+    selectedFile: featuredImage,
+    setSelectedFile: setFeaturedImage,
     contentData,
     setContentData,
     readTime,
@@ -149,6 +175,8 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     reset,
     isFormEmpty,
     uploadLoading,
+    successMessage,
+    setSuccessMessage,
   }
   return (
     <BlogContext.Provider value={contextValue}>{children}</BlogContext.Provider>

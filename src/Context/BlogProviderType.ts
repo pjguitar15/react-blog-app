@@ -12,6 +12,7 @@ export type BlogContextType = {
   setRoute: React.Dispatch<SetStateAction<string>>
   category: string
   setCategory: React.Dispatch<SetStateAction<string>>
+
   isPublished: boolean
   setIsPublished: React.Dispatch<SetStateAction<boolean>>
   isFeatured: boolean
@@ -35,4 +36,6 @@ export type BlogContextType = {
   reset: () => void
   isFormEmpty: boolean
   uploadLoading: boolean
+  successMessage: string
+  setSuccessMessage: React.Dispatch<SetStateAction<string>>
 }

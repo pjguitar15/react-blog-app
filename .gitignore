@@ -12,9 +12,9 @@ dist
 dist-ssr
 *.local
 
-.src/tasks.txt
 
 # Editor directories and files
+.src/tasks.txt
 .vscode/*
 !.vscode/extensions.json
 .idea

@@ -35,22 +35,24 @@ export const resetFields = (
 export const processContentData = async (contentData: any) => {
   const modifiedData: any = []
 
+  // ! BUG HERE: else block doesn't wait for asynchronous function to finish
   // Array to hold promises for each asynchronous task
   const promises = contentData.map(async (item: any) => {
     if (item.type === 'image') {
       // upload image logic here
       const imageRef = ref(storage, `images/${item.content?.name}`)
-      console.log('Loading...')
 
       try {
         // Upload image and get download URL
         await uploadAndGetDownloadURL(imageRef, item, modifiedData)
+        console.log('Image pushed')
       } catch (err) {
         console.error(err)
         // Handle error if needed
       }
     } else {
       modifiedData.push(item)
+      console.log('Heading/Paragraph pushed')
     }
   })
 

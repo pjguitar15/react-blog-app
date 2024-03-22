@@ -6,15 +6,51 @@ import HeroDetailItem from './HeroDetailItem'
 import RecentPostItem from './RecentPostItem'
 import { MdSend } from 'react-icons/md'
 import Comment from './Comment'
+import { useGetDocFromRoute } from '../../../helpers/hooks/useGetDocFromRoute'
+import { useParams } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const SingleBlog = () => {
+  const param = useParams()
+  const { data } = useGetDocFromRoute(`/${param.id}`)
+  useEffect(() => {
+    console.log(data)
+  }, [data])
+
+  const DETAIL_ITEMS = [
+    {
+      roundColor: 'bg-orange-500',
+      detailName: 'author',
+      titleName: data?.author,
+    },
+    {
+      roundColor: 'bg-blue-500',
+      detailName: 'publish date',
+      titleName: data?.publishDate,
+    },
+    {
+      roundColor: 'bg-cyan-500',
+      detailName: 'last update',
+      titleName: TEST_CONTENT.lastUpdate,
+    },
+    {
+      roundColor: 'bg-lime-500',
+      detailName: 'categories',
+      titleName: data?.category,
+    },
+    {
+      roundColor: 'bg-yellow-500',
+      detailName: 'read time',
+      titleName: data?.readTime,
+    },
+  ]
   return (
     <main>
       <section className='relative'>
         <div className='h-full bg-gradient-to-t from-slate-800 absolute inset-0 z-0'></div>
         <img
           className='object-cover w-full h-96 z-0'
-          src='https://images.unsplash.com/photo-1682687221073-53ad74c2cad7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+          src={data?.featuredImage}
           alt=''
         />
         <div className='py-5 absolute bottom-0 w-full flex justify-center gap-12'>
@@ -36,17 +72,18 @@ const SingleBlog = () => {
             <div className='size-1 bg-yellow-400 rounded-full'></div>
             <div className='poppins-medium text-yellow-500'>Blog</div>
             <div className='size-1 bg-yellow-400 rounded-full'></div>
-            <div className='poppins-medium text-slate-400'>
-              {TEST_CONTENT.title}
-            </div>
+            <div className='poppins-medium text-slate-400'>{data?.title}</div>
           </div>
 
           <div className='flex flex-col gap-6'>
             <h2 className='text-3xl text-sky-900 poppins-medium'>
-              {TEST_CONTENT.title}
+              {data?.title}
             </h2>
-            {TEST_CONTENT.content.map((item, index) => (
+            {data?.content.map((item: any, index: number) => (
               <div key={index}>
+                {item.type === 'image' && (
+                  <img className='w-3/4 h-auto' src={item.content} alt='' />
+                )}
                 {item.type === 'paragraph' && (
                   <p className='poppins-regular text-slate-500 text-sm leading-loose indent-7'>
                     {item.content}
@@ -56,9 +93,6 @@ const SingleBlog = () => {
                   <h5 className='text-lg poppins-medium text-slate-700'>
                     {item.content}
                   </h5>
-                )}
-                {item.type === 'image' && (
-                  <img className='w-3/4 h-auto' src={item.content} alt='' />
                 )}
               </div>
             ))}
@@ -147,33 +181,5 @@ const SingleBlog = () => {
     </main>
   )
 }
-
-const DETAIL_ITEMS = [
-  {
-    roundColor: 'bg-orange-500',
-    detailName: 'author',
-    titleName: TEST_CONTENT.author,
-  },
-  {
-    roundColor: 'bg-blue-500',
-    detailName: 'publish date',
-    titleName: TEST_CONTENT.publishDate,
-  },
-  {
-    roundColor: 'bg-cyan-500',
-    detailName: 'last update',
-    titleName: TEST_CONTENT.lastUpdate,
-  },
-  {
-    roundColor: 'bg-lime-500',
-    detailName: 'categories',
-    titleName: TEST_CONTENT.category,
-  },
-  {
-    roundColor: 'bg-yellow-500',
-    detailName: 'read time',
-    titleName: TEST_CONTENT.readTime,
-  },
-]
 
 export default SingleBlog

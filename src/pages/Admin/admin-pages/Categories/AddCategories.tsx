@@ -62,28 +62,33 @@ const AddCategories = ({
         },
         () => {
           // Handle successful uploads on complete
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            const payload = {
-              userId: loggedInUser,
-              category: categoryInput,
-              imageUrl: downloadURL,
-            }
-            uploadPayload('categories', payload).then(() => {
-              setUploadLoading(false)
-              console.log('Upload successful!')
-              setSuccessMessage('Category has been created successfully!')
-              setTimeout(() => {
-                setSuccessMessage('')
-              }, 15000)
-              setCategoryInput('')
-              setImageUpload(null)
-              if (imageInputRef && imageInputRef.current) {
-                imageInputRef.current.value = '' // Clear the value of the file input
+          getDownloadURL(uploadTask.snapshot.ref)
+            .then((downloadURL) => {
+              const payload = {
+                userId: loggedInUser.uid,
+                category: categoryInput,
+                imageUrl: downloadURL,
               }
+              uploadPayload('categories', payload).then(() => {
+                setUploadLoading(false)
+                console.log('Upload successful!')
+                setSuccessMessage('Category has been created successfully!')
+                setTimeout(() => {
+                  setSuccessMessage('')
+                }, 15000)
+                setCategoryInput('')
+                setImageUpload(null)
+                if (imageInputRef && imageInputRef.current) {
+                  imageInputRef.current.value = '' // Clear the value of the file input
+                }
 
-              setError('')
+                setError('')
+              })
             })
-          })
+            .catch((err: string) => {
+              setUploadLoading(false)
+              console.log(err)
+            })
         }
       )
     } else {

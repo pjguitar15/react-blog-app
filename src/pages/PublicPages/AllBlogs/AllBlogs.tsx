@@ -1,8 +1,14 @@
+import { useEffect } from 'react'
+import { useGetDoc } from '../../../helpers/hooks/useGetDoc'
 import CategoriesFilter from './CategoriesFilter'
 import MainPostItem from './MainPostItem'
 import SidebarPostItem from './SidebarPostItem'
 
 const AllBlogs = () => {
+  const { dataFromFirestore, loading } = useGetDoc('blogs')
+  useEffect(() => {
+    console.log(dataFromFirestore)
+  }, [dataFromFirestore])
   return (
     <>
       <CategoriesFilter />
@@ -21,10 +27,10 @@ const AllBlogs = () => {
             </div>
             <h1 className='poppins-semibold mt-3'>News</h1>
             <div className='flex flex-col gap-3 py-3'>
-              {TEST_RECENT_POST.map((item, index) => (
+              {dataFromFirestore.map((item, index) => (
                 <SidebarPostItem
-                  imgUrl={item.imgUrl}
-                  shortDescription={item.shortDescription}
+                  imgUrl={item.featuredImage}
+                  shortDescription={item.summary}
                   key={index}
                 />
               ))}
@@ -32,10 +38,9 @@ const AllBlogs = () => {
           </div>
           <div className='w-4/6 py-3'>
             <div className='grid grid-cols-2 gap-2'>
-              <MainPostItem />
-              <MainPostItem />
-              <MainPostItem />
-              <MainPostItem />
+              {dataFromFirestore.map((item, index) => (
+                <MainPostItem key={index} item={item} />
+              ))}
             </div>
           </div>
         </section>

@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react'
 import { db } from '../../firebase/firebaseConfig'
 import { collection, getDocs } from 'firebase/firestore'
 
-export const useGetDoc = (colName: string) => {
+export const useGetDoc = (collectionName: string) => {
   const [dataFromFirestore, setDataFromFirestore] = useState<any[]>([])
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const getDocFromFirestore = async () => {
       setLoading(true)
-      const colRef = collection(db, colName)
+      const colRef = collection(db, collectionName)
       const snapshot = await getDocs(colRef)
       const snapshotArray: any = []
       snapshot.docs.forEach((item) => {
@@ -20,7 +20,7 @@ export const useGetDoc = (colName: string) => {
     }
 
     getDocFromFirestore()
-  }, [colName])
+  }, [collectionName])
 
   useEffect(() => {
     console.log(dataFromFirestore)

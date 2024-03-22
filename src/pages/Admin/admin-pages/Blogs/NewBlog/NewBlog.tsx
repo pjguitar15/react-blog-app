@@ -82,7 +82,13 @@ const NewBlog = () => {
           <img src={WormieSuccess} alt='' />
           <div className='bg-green-100 border border-green-300 text-green-600 p-4 rounded-lg poppins-regular text-sm'>
             {successMessage}
-            <button className='poppins-semibold hover:underline ms-1 '>
+            <button
+              onClick={() => {
+                navigate(`/blogs`)
+                setSuccessMessage('')
+              }}
+              className='poppins-semibold hover:underline ms-1 '
+            >
               Click here to view.
             </button>
           </div>
@@ -103,6 +109,16 @@ const NewBlog = () => {
           </>
         )}
       </div>
+      {!successMessage && (
+        <button
+          onClick={handleSave}
+          disabled={uploadLoading}
+          className={`flex items-center disabled:opacity-50 disabled:cursor-not-allowed gap-2 bg-violet-500 hover:bg-violet-600 hover:scale-105 transition duration-300 text-white px-4 rounded-lg py-2`}
+        >
+          <FaRegSave className='text-xl' />
+          <h5 className='text-md'>Save</h5>
+        </button>
+      )}
     </main>
   )
 }

@@ -5,7 +5,7 @@ import MainPostItem from './MainPostItem'
 import SidebarPostItem from './SidebarPostItem'
 
 const AllBlogs = () => {
-  const { dataFromFirestore, loading } = useGetDoc('blogs')
+  const { dataFromFirestore } = useGetDoc('blogs')
   useEffect(() => {
     console.log(dataFromFirestore)
   }, [dataFromFirestore])

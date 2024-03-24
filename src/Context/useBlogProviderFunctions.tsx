@@ -1,4 +1,9 @@
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  StorageReference,
+} from 'firebase/storage'
 import { storage } from '../firebase/firebaseConfig'
 import { ContentDataType } from '../pages/Admin/admin-pages/Blogs/NewBlog/ContentForm'
 
@@ -32,12 +37,10 @@ export const resetFields = (
   ])
 }
 
-export const processContentData = async (contentData: any) => {
-  const modifiedData: any = []
+export const processContentData = async (contentData: ContentDataType[]) => {
+  const modifiedData = []
 
-  // ! BUG HERE: else block doesn't wait for asynchronous function to finish
-  // Array to hold promises for each asynchronous task
-  const promises = contentData.map(async (item: any) => {
+  for (const item of contentData) {
     if (item.type === 'image') {
       // upload image logic here
       const imageRef = ref(storage, `images/${item.content?.name}`)
@@ -54,17 +57,14 @@ export const processContentData = async (contentData: any) => {
       modifiedData.push(item)
       console.log('Heading/Paragraph pushed')
     }
-  })
-
-  // Wait for all promises to resolve
-  await Promise.all(promises)
+  }
 
   return modifiedData
 }
 
 async function uploadAndGetDownloadURL(
-  imageRef: any,
-  item: any,
+  imageRef: StorageReference,
+  item: ContentDataType,
   modifiedData: any
 ) {
   try {

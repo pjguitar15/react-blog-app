@@ -3,6 +3,7 @@ import { GoPlus } from 'react-icons/go'
 import 'react-quill/dist/quill.snow.css'
 import { useBlogContext } from '../../../../../Context/BlogContext'
 import DeleteConfirmModal from '../../../../../components/DeleteConfirmModal'
+import { Reorder } from 'framer-motion'
 
 const hoverScale = 'hover:scale-105 transition duration-300'
 
@@ -70,26 +71,31 @@ const ContentForm = () => {
         Edit your content here
       </h2>
       <div className='pb-[60px] relative xl:w-3/4'>
-        <div
+        <Reorder.Group
+          axis='y'
+          values={contentData}
+          onReorder={setContentData}
           id='test'
           ref={contentParentRef}
           className='flex flex-col gap-3 bg-white pb-4 pt-3 px-2 shadow rounded-lg'
         >
           {contentData.map((item: any, index: number) => (
-            <ContentItem
-              key={item.id}
-              item={item}
-              setContent={(newContent: string | File) => {
-                const updatedContentData = [...contentData]
-                updatedContentData[index].content = newContent
-                setContentData(updatedContentData)
-              }}
-              setSelectedDeleteId={setSelectedDeleteId}
-            />
+            <Reorder.Item value={item}>
+              <ContentItem
+                key={item.id}
+                item={item}
+                setContent={(newContent: string | File) => {
+                  const updatedContentData = [...contentData]
+                  updatedContentData[index].content = newContent
+                  setContentData(updatedContentData)
+                }}
+                setSelectedDeleteId={setSelectedDeleteId}
+              />
+            </Reorder.Item>
           ))}
           <hr className='w-3/4 mx-auto' />
           <AddButton addContentType={addContentType} />
-        </div>
+        </Reorder.Group>
       </div>
     </main>
   )

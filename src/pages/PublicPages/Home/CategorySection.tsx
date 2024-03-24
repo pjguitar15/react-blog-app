@@ -1,4 +1,6 @@
 import { SlArrowRight } from 'react-icons/sl'
+import { useGetAllCategories } from '../../../helpers/hooks/useGetAllCategories'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const CategorySection = () => {
   return (
@@ -21,38 +23,23 @@ const CategorySection = () => {
 }
 
 const Cards = () => {
-  const cardContents = [
-    {
-      title: 'CSS',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png',
-    },
-    {
-      title: 'Javascript',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/768px-JavaScript-logo.png',
-    },
-    {
-      title: 'Tailwind',
-      img: 'https://w7.pngwing.com/pngs/293/485/png-transparent-tailwind-css-hd-logo.png',
-    },
-    {
-      title: 'VueJS',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1184px-Vue.js_Logo_2.svg.png',
-    },
-    {
-      title: 'ReactJS',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png',
-    },
-  ]
+  const { allCategories } = useGetAllCategories()
 
   return (
     <div className='grid grid-cols-5 py-5 gap-5'>
-      {cardContents.map((item, index: number) => (
+      {allCategories?.slice(0, 5).map((item: any, index: number) => (
         <div
           key={index}
           className='py-24 flex flex-col items-center justify-center bg-white rounded cursor-pointer hover:bg-violet-100 transition duration-300'
         >
-          <img className='w-12 mb-4' src={item.img} alt='' />
-          <h6 className='font-semibold text-xl text-slate-800'>{item.title}</h6>
+          <LazyLoadImage
+            alt='category'
+            className='w-12 mb-4'
+            src={item.imageUrl}
+          />
+          <h6 className='font-semibold text-xl text-slate-800'>
+            {item.category}
+          </h6>
         </div>
       ))}
     </div>

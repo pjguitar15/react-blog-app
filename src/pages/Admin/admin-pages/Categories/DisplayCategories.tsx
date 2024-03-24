@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { db } from '../../../../firebase/firebaseConfig'
 import { deleteDoc, doc } from 'firebase/firestore'
 import LoadingCategories from './LoadingCategories'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 export type CategoryType = {
   category: string
@@ -96,7 +97,11 @@ const DisplayCategories = ({
                 }}
                 className='absolute top-3 right-3 text-xl opacity-0 group-hover:opacity-100 animation duration-300 hover:text-red-500 group-hover:scale-125'
               />
-              <img className='w-12 mb-4' src={item.imageUrl} alt='' />
+              <LazyLoadImage
+                alt='category'
+                className='w-12 mb-4'
+                src={item.imageUrl}
+              />
               <h6 className='font-semibold text-xl text-slate-800'>
                 {item.category}
               </h6>

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import BlogIllustration from '../../../../assets/wormie.png'
+import { useBlogContext } from '../../../../Context/BlogContext'
 
 const WelcomePanel = () => {
+  const { isUserEditing } = useBlogContext()
   return (
     <div className='bg-violet-700 rounded-lg w-full px-10 py-5 flex gap-9'>
       <div className='w-3/4 flex flex-col gap-4 justify-center text-white'>
@@ -16,7 +18,7 @@ const WelcomePanel = () => {
           to='/admin/blogs/new'
           className='bg-violet-900 hover:bg-violet-300 hover:text-black transition duration-300 text-white px-6 py-3 rounded-lg ms-0 me-auto poppins-regular text-sm'
         >
-          Write new post
+          {isUserEditing ? 'Continue Writing Post' : 'Write new post'}
         </Link>
       </div>
       <div className='w-1/4 p-4 rounded-lg flex items-center'>

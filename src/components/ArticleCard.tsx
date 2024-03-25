@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 type ArticleCardTypes = {
   title: string
   featuredImage: string
@@ -6,11 +8,18 @@ type ArticleCardTypes = {
   publishDate: string
   readTime: string
   summary: string
+  route: string
 }
 
 const ArticleCard: React.FC<{ item: ArticleCardTypes }> = ({ item }) => {
+  const navigate = useNavigate()
   return (
-    <div className='p-3 shadow-lg bg-white transition duration-300 cursor-pointer rounded-lg hover:scale-105 flex flex-col gap-7'>
+    <div
+      onClick={() => {
+        navigate(`blog${item.route}`)
+      }}
+      className='p-3 shadow-lg bg-white transition duration-300 cursor-pointer rounded-lg hover:scale-105 flex flex-col gap-7'
+    >
       <div>
         <div className='h-48 overflow-hidden rounded-lg'>
           <img

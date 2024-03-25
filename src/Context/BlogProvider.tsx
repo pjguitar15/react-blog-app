@@ -10,6 +10,8 @@ import {
   uploadFeaturedImage,
 } from './useBlogProviderFunctions'
 import { useUploadToFirestore } from '../helpers/hooks/useUploadToFirestore'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useGetAllRoutes } from '../helpers/hooks/useGetAllRoutes'
 
 const currentDate = new Date()
 
@@ -37,6 +39,9 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
   const [successMessage, setSuccessMessage] = useState('')
 
   const { uploadPayload } = useUploadToFirestore()
+  const { allRoutes } = useGetAllRoutes()
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
 
   const hasEmptyFields =
     title === '' ||
@@ -95,7 +100,10 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
       setSummary,
       setReadTime,
       setFeaturedImage,
-      setContentData
+      setContentData,
+      setIsPublished,
+      setIsFeatured,
+      setIsCommentsDisabled
     )
   }
 
@@ -103,6 +111,17 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     if (hasEmptyFields) {
       setValidationError(
         `We can't process this yet. Please complete all fields and hit save again.`
+      )
+      return
+    }
+
+    const isInvalidRoute = allRoutes.some(
+      (item: { route: string }) => item.route === route
+    )
+
+    if (isInvalidRoute) {
+      setValidationError(
+        `This route is taken. Please enter a different route for your blog.`
       )
       return
     }
@@ -186,7 +205,28 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     setSuccessMessage,
   }
   return (
-    <BlogContext.Provider value={contextValue}>{children}</BlogContext.Provider>
+    <BlogContext.Provider value={contextValue}>
+      {isUserEditing && pathname !== '/admin/blogs/new' ? (
+        <button
+          onClick={() => navigate('/admin/blogs/new')}
+          className='bg-yellow-100 border border-yellow-300 fixed bottom-[3rem] right-[3rem] pb-3 rounded-lg poppins-medium text-yellow-700 z-50'
+        >
+          <div className='relative pt-3'>
+            <div
+              onClick={reset}
+              className='absolute right-0 -top-4 text-md font-semibold bg-red-100 rounded-full px-3 py-1 text-red-800 hover:scale-105 transition duration-300'
+            >
+              ×
+            </div>
+          </div>
+          <div className='px-5'>✍️ Continue writing your post?</div>
+        </button>
+      ) : (
+        <></>
+      )}
+
+      {children}
+    </BlogContext.Provider>
   )
 }
 

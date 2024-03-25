@@ -21,10 +21,12 @@ const NavbarWrapper = () => {
 const AdminWrapper = () => {
   return (
     <div className='flex'>
-      <AuthGuardWrapper>
-        <AdminSidebar />
-      </AuthGuardWrapper>
-      <Outlet />
+      <BlogProvider>
+        <AuthGuardWrapper>
+          <AdminSidebar />
+        </AuthGuardWrapper>
+        <Outlet />
+      </BlogProvider>
     </div>
   )
 }
@@ -46,9 +48,7 @@ const App = () => {
   return (
     <div className='relative'>
       <AuthProvider>
-        <BlogProvider>
-          <RouterProvider router={router} />
-        </BlogProvider>
+        <RouterProvider router={router} />
       </AuthProvider>
     </div>
   )

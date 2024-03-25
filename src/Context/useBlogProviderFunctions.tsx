@@ -16,7 +16,10 @@ export const resetFields = (
   setSummary: React.Dispatch<React.SetStateAction<string>>,
   setReadTime: React.Dispatch<React.SetStateAction<string>>,
   setSelectedFile: React.Dispatch<React.SetStateAction<File | null>>,
-  setContentData: React.Dispatch<React.SetStateAction<ContentDataType[]>>
+  setContentData: React.Dispatch<React.SetStateAction<ContentDataType[]>>,
+  setIsPublished: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsFeatured: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsCommentsDisabled: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   setTitle('')
   setAuthor('')
@@ -26,6 +29,9 @@ export const resetFields = (
   setSummary('')
   setReadTime('')
   setSelectedFile(null)
+  setIsPublished(false)
+  setIsFeatured(false)
+  setIsCommentsDisabled(false)
   setContentData([
     { content: 'Please edit this heading', id: 'shn25ay5w', type: 'heading' },
     {

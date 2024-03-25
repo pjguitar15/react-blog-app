@@ -4,6 +4,7 @@ import SuccessModal from '../../../components/SuccessModal.tsx'
 import { Link, useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../../../firebase/firebaseConfig.ts'
+import { useUploadToFirestore } from '../../../helpers/hooks/useUploadToFirestore.tsx'
 const RegisterForm = () => {
   const [emailInput, setEmailInput] = useState('')
   const [displayName, setDisplayName] = useState('')
@@ -12,6 +13,8 @@ const RegisterForm = () => {
   const [error, setError] = useState('')
   const [loginSuccess, setLoginSuccess] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  const { uploadPayload } = useUploadToFirestore()
 
   const navigate = useNavigate()
 
@@ -26,9 +29,13 @@ const RegisterForm = () => {
     if (validations.isNotEmpty && validations.isPasswordMatch) {
       setLoading(true)
       createUserWithEmailAndPassword(auth, emailInput, passwordInput)
-        .then((userCredential) => {
+        .then(async (userCredential) => {
           // Signed up
           const user = userCredential.user
+
+          // Add to Users Collection
+          const payload = { uid: user.uid, type: 'user' }
+          await AddToUsersCollection(payload)
 
           // Update the user's display name
           return updateProfile(user, {
@@ -51,6 +58,11 @@ const RegisterForm = () => {
     } else {
       setError('Invalid input')
     }
+  }
+
+  const AddToUsersCollection = async (payload: any) => {
+    await uploadPayload('users', payload)
+    console.log('User uploaded to firestore')
   }
   return (
     <>

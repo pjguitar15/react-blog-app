@@ -2,7 +2,7 @@ import HeroImage from '../../../assets/hero-img.webp'
 const HeroSection = () => {
   return (
     <section className='bg-gray-100'>
-      <div className='container mx-auto grid grid-cols-2 py-52'>
+      <div className='py-52 container mx-auto grid grid-cols-2'>
         {/* left side */}
         <div className='poppins-medium'>
           <div className='text-6xl font-semibold text-slate-800'>

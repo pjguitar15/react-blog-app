@@ -7,6 +7,7 @@ import { useBlogContext } from '../../../../../Context/BlogContext'
 import { useGetDoc } from '../../../../../helpers/hooks/useGetDoc'
 import BlogsTable from './BlogsTable'
 import BlogsTableLoading from './BlogsTableLoading'
+import Filter from './Filter'
 
 const Blogs = () => {
   const itemsPerPage = 8 // You can adjust this value based on your preference.
@@ -50,6 +51,9 @@ const Blogs = () => {
           <h5 className='text-md'>Create</h5>
         </Link>
       </div>
+
+      {!loading && <Filter />}
+
       {/* Table here */}
       {loading ? (
         <BlogsTableLoading />

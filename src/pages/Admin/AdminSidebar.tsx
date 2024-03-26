@@ -12,8 +12,9 @@ import { GoHome } from 'react-icons/go'
 import { Link } from 'react-router-dom'
 import { useBlogContext } from '../../Context/BlogContext'
 import { useAuthContext } from '../../Context/AuthContext'
+import { MdOutlinePendingActions } from 'react-icons/md'
 
-const TEST_LINKS = [
+const SIDEBAR_LINKS = [
   {
     title: 'dashboard',
     icon: <AiOutlineDashboard className='text-slate-500 icon' />,
@@ -21,6 +22,10 @@ const TEST_LINKS = [
   {
     title: 'blogs',
     icon: <TbWriting className='text-slate-500 icon' />,
+  },
+  {
+    title: 'pending',
+    icon: <MdOutlinePendingActions className='text-slate-500 icon' />,
   },
   {
     title: 'categories',
@@ -65,7 +70,7 @@ const AdminSidebar = () => {
       </div>
 
       <div>
-        {TEST_LINKS.map((item, index) => (
+        {SIDEBAR_LINKS.map((item, index) => (
           <AdminLink item={item} key={index} />
         ))}
         <div

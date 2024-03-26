@@ -73,6 +73,12 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     featuredImage === null &&
     contentData === defaultContentData
 
+  useEffect(() => {
+    title
+      ? setRoute(`/${title.toLowerCase().split(' ').join('-')}`)
+      : setRoute('')
+  }, [title])
+
   // * Removes the validation error when user completes the form after getting a validation error
   useEffect(() => {
     if (!hasEmptyFields) {

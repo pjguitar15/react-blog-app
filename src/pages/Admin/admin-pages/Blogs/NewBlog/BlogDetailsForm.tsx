@@ -12,8 +12,6 @@ const BlogDetailsForm = () => {
     setAuthor,
     publishDate,
     setPublishDate,
-    route,
-    setRoute,
     category,
     setCategory,
     isPublished,
@@ -76,17 +74,11 @@ const BlogDetailsForm = () => {
             Route <span className='text-red-500'>*</span>
           </div>
           <input
-            value={route}
-            onChange={(e) => {
-              const inputValue = e.target.value.trim()
-              const regex = /^[a-zA-Z0-9_/-]*$/ // Regular expression to allow alphanumeric characters, underscores, forward slashes, and dashes
-              if (regex.test(inputValue)) {
-                setRoute(inputValue)
-              }
-            }}
-            className='bg-gray-100 px-4 rounded py-2 outline-none'
+            value={title ? `/${title.toLowerCase().split(' ').join('-')}` : ''}
+            className='bg-gray-100 px-4 rounded py-2 outline-none text-slate-500'
             type='text'
             placeholder={'/my-blog-post'}
+            readOnly
           />
         </div>
         <TextInput

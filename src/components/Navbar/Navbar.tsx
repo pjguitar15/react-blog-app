@@ -72,7 +72,7 @@ const Navbar = () => {
               <>
                 {loggedInUser ? (
                   <PrimaryButton
-                    onClick={() => navigate('/admin/blogs/new')}
+                    onClick={() => navigate('/admin/dashboard')}
                     text='Go to Dashboard'
                     size='normal'
                     outline

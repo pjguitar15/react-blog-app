@@ -12,6 +12,7 @@ import {
 import { useUploadToFirestore } from '../helpers/hooks/useUploadToFirestore'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useGetAllRoutes } from '../helpers/hooks/useGetAllRoutes'
+import { useAuthContext } from './AuthContext'
 
 const currentDate = new Date()
 
@@ -25,7 +26,6 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
   )
   const [route, setRoute] = useState('')
   const [category, setCategory] = useState<string>('Select a Category')
-  const [isPublished, setIsPublished] = useState(false)
   const [isFeatured, setIsFeatured] = useState(false)
   const [isCommentsDisabled, setIsCommentsDisabled] = useState(false)
   const [content, setContent] = useState('')
@@ -42,6 +42,7 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
   const { allRoutes } = useGetAllRoutes()
   const { pathname } = useLocation()
   const navigate = useNavigate()
+  const { loggedInUser } = useAuthContext()
 
   const hasEmptyFields =
     title === '' ||
@@ -107,7 +108,6 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
       setReadTime,
       setFeaturedImage,
       setContentData,
-      setIsPublished,
       setIsFeatured,
       setIsCommentsDisabled
     )
@@ -150,15 +150,16 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
       content: modifiedContentData,
       title,
       author,
-      publishDate,
+      status: 'pending',
       route,
       category,
-      isPublished,
       isFeatured,
+      publishDate,
       isCommentsDisabled,
       summary,
       readTime,
       featuredImage: featuredImageURL,
+      uid: loggedInUser.uid,
     }
     console.log('Payload', payload)
     console.log('Done!')
@@ -184,8 +185,6 @@ const BlogProvider: React.FC<{ children: React.ReactNode }> = ({
     setRoute,
     category,
     setCategory,
-    isPublished,
-    setIsPublished,
     isFeatured,
     setIsFeatured,
     isCommentsDisabled,

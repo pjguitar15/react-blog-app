@@ -17,7 +17,6 @@ export const resetFields = (
   setReadTime: React.Dispatch<React.SetStateAction<string>>,
   setSelectedFile: React.Dispatch<React.SetStateAction<File | null>>,
   setContentData: React.Dispatch<React.SetStateAction<ContentDataType[]>>,
-  setIsPublished: React.Dispatch<React.SetStateAction<boolean>>,
   setIsFeatured: React.Dispatch<React.SetStateAction<boolean>>,
   setIsCommentsDisabled: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
@@ -29,7 +28,6 @@ export const resetFields = (
   setSummary('')
   setReadTime('')
   setSelectedFile(null)
-  setIsPublished(false)
   setIsFeatured(false)
   setIsCommentsDisabled(false)
   setContentData([

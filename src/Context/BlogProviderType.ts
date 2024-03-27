@@ -12,9 +12,6 @@ export type BlogContextType = {
   setRoute: React.Dispatch<SetStateAction<string>>
   category: string
   setCategory: React.Dispatch<SetStateAction<string>>
-
-  isPublished: boolean
-  setIsPublished: React.Dispatch<SetStateAction<boolean>>
   isFeatured: boolean
   setIsFeatured: React.Dispatch<SetStateAction<boolean>>
   isCommentsDisabled: boolean

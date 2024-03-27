@@ -3,7 +3,7 @@ import WelcomePanel from './WelcomePanel'
 
 const Dashboard = () => {
   return (
-    <main className='bg-slate-100 w-full p-10 flex gap-5'>
+    <main className='bg-slate-100 w-full h-screen p-10 flex gap-5 overflow-y-scroll'>
       <div className='w-3/4 flex flex-col gap-6'>
         <WelcomePanel />
         <TopArticles />

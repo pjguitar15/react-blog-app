@@ -14,8 +14,6 @@ const BlogDetailsForm = () => {
     setPublishDate,
     category,
     setCategory,
-    isPublished,
-    setIsPublished,
     isFeatured,
     setIsFeatured,
     isCommentsDisabled,
@@ -98,10 +96,6 @@ const BlogDetailsForm = () => {
           label='Read time'
           placeholder='3 mins'
           state={[readTime, setReadTime]}
-        />
-        <CheckboxInput
-          label='Published'
-          boolState={[isPublished, setIsPublished]}
         />
         <CheckboxInput
           label='Featured'

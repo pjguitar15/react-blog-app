@@ -17,10 +17,7 @@ const AuthGuardWrapper: React.FC<{ children: React.ReactNode }> = ({
       )
     } else {
       if (!loggedInUser) {
-        console.log(loggedInUser)
         navigate('/sign-in')
-      } else {
-        console.log(loggedInUser)
       }
     }
   }

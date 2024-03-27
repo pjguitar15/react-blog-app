@@ -15,6 +15,8 @@ export type BlogType = {
   route: string
   summary: string
   title: string
+  uid: string
+  status: string
 }
 
 type ContentType = {

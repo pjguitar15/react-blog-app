@@ -18,7 +18,17 @@ const MainPostItem = ({ item }: { item: any }) => {
         >
           {item.title}
         </Link>
+
         <p className='poppins-regular text-slate-500 text-xs'>{item.summary}</p>
+
+        <div className='flex gap-3 items-center mt-4'>
+          <img
+            className='size-9 object-cover rounded-full'
+            src={item.featuredImage}
+            alt=''
+          />
+          <p className='poppins-medium text-slate-600 text-sm'>{item.author}</p>
+        </div>
       </div>
     </div>
   )

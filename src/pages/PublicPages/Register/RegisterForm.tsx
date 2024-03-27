@@ -34,7 +34,7 @@ const RegisterForm = () => {
           const user = userCredential.user
 
           // Add to Users Collection
-          const payload = { uid: user.uid, type: 'user' }
+          const payload = { uid: user.uid, type: 'user', email: user.email }
           await AddToUsersCollection(payload)
 
           // Update the user's display name

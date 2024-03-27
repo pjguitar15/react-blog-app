@@ -7,12 +7,17 @@ import SidebarLoading from './SidebarPostItem/SidebarLoading'
 import { useSearchParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { BlogType } from '../../Admin/admin-pages/Blogs/AllBlogs/BlogsTable'
+import NoItems from './MainPostItem/NoItems'
 
 const AllBlogs = () => {
   const { dataFromFirestore, loading } = useGetDoc('blogs')
   const [displayData, setDisplayData] = useState<BlogType[] | []>([])
   const [searchParams] = useSearchParams()
   const category = searchParams.get('category')
+
+  useEffect(() => {
+    console.log(displayData)
+  }, [displayData])
 
   useEffect(() => {
     const fetchData = () => {
@@ -23,12 +28,25 @@ const AllBlogs = () => {
   }, [dataFromFirestore])
 
   useEffect(() => {
-    console.log('Category', category)
-    const filterData = dataFromFirestore.filter(
-      (item) => item.category === category
-    )
-    setDisplayData(filterData)
-  }, [category])
+    if (dataFromFirestore) {
+      console.log('Check if Data Exists')
+      const isDataExist = dataFromFirestore.some(
+        (item) => item.category === category
+      )
+      console.log('Does it?', isDataExist)
+
+      if (isDataExist) {
+        const filterData = dataFromFirestore.filter(
+          (item) => item.category === category && item.status === 'published'
+        )
+        console.log('Data will be set to filtered because it exist!')
+        setDisplayData(filterData)
+      } else {
+        setDisplayData([])
+        console.log('Data will be set to [] because it does not exist')
+      }
+    }
+  }, [category, dataFromFirestore])
 
   return (
     <>
@@ -68,7 +86,7 @@ const AllBlogs = () => {
                         <SidebarLoading key={index} />
                       ))
                     : category === 'All'
-                      ? displayData
+                      ? dataFromFirestore
                           .filter((item) => item.status === 'published')
                           .map((item, index) => (
                             <MainPostItem key={index} item={item} />
@@ -81,6 +99,7 @@ const AllBlogs = () => {
                 </>
               )}
             </div>
+            {!displayData.length && <NoItems />}
           </div>
         </section>
       </main>

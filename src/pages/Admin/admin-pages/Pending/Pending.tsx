@@ -6,7 +6,7 @@ import UserDisplay from './UserDisplay/UserDisplay'
 const Pending = () => {
   const { userInfo, loading } = useGetUserInfo()
   return (
-    <main className='bg-slate-100 w-full p-7 relative'>
+    <main className='bg-slate-100 w-full p-7 relative h-screen overflow-y-scroll'>
       {loading ? (
         <div className='py-7 grid grid-cols-2 gap-5'>
           <Loading />

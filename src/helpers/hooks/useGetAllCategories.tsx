@@ -2,8 +2,15 @@ import { collection, getDocs } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import { db } from '../../firebase/firebaseConfig'
 
+type CategoryType = {
+  category: string
+  id: string
+  imageUrl: string
+  userId: string
+}
+
 export const useGetAllCategories = () => {
-  const [allCategories, setAllCategories] = useState<string[]>([])
+  const [allCategories, setAllCategories] = useState<CategoryType[]>([])
   const [isCategoriesLoading, setIsCategoriesLoading] = useState(false)
 
   useEffect(() => {

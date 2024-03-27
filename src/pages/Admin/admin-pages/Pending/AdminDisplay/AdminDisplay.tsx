@@ -36,6 +36,7 @@ const PendingItem: React.FC<{
   adminPendingItems: BlogType[]
 }> = ({ item, setAdminPendingItems, adminPendingItems }) => {
   const [isProcessing, setIsProcessing] = useState(false)
+
   const acceptBlogHandler = async () => {
     setIsProcessing(true)
     await updateDoc(doc(db, 'blogs', item.id), {
@@ -149,6 +150,7 @@ const PendingItem: React.FC<{
           )}
 
           <button
+            onClick={() => window.open(`/blog${item.route}`, '_blank')}
             disabled={isProcessing}
             className={`bg-cyan-500 text-white poppins-medium px-4 py-1 rounded-lg text-sm hover:scale-105 transition duration-300 ease-in-out ${isProcessing && DISABLED_STYLE}`}
           >

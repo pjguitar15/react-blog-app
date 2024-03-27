@@ -18,9 +18,12 @@ const TopArticles = () => {
         </div>
       </div>
       <div className='flex flex-col gap-6 py-5'>
-        {dataFromFirestore.slice(0, 5).map((item: BlogType, index) => (
-          <TopArticleItem key={index} item={item} number={index} />
-        ))}
+        {dataFromFirestore
+          .filter((item) => item.status === 'published')
+          .slice(0, 5)
+          .map((item: BlogType, index) => (
+            <TopArticleItem key={index} item={item} number={index} />
+          ))}
       </div>
     </main>
   )

@@ -22,7 +22,7 @@ const FeaturedArticleSection = () => {
         {/* cards */}
         <div className='grid grid-cols-4 mt-8 gap-4'>
           {dataFromFirestore
-            .filter((item) => item.isFeatured)
+            .filter((item) => item.status === 'published')
             .slice(0, 4)
             .map((item, index) => (
               <ArticleCard item={item} key={index} />

@@ -84,7 +84,7 @@ const NewBlog = () => {
             {successMessage}
             <button
               onClick={() => {
-                navigate(`/blogs`)
+                navigate(`/blogs?category=All`)
                 setSuccessMessage('')
               }}
               className='poppins-semibold hover:underline ms-1 '

@@ -17,8 +17,8 @@ const CategoriesFilter = () => {
     console.log(allCategories)
   }, [allCategories])
   return (
-    <main className='bg-slate-200 py-8 px-12'>
-      <div className='container mx-auto flex justify-between gap-4'>
+    <main className='bg-slate-200 px-12'>
+      <div className='container mx-auto flex justify-between gap-4 overflow-x-scroll py-8'>
         {!isCategoriesLoading && (
           <button
             onClick={() => setSearchParams({ category: 'All' })}

@@ -48,8 +48,8 @@ const AllBlogs = () => {
     <>
       <CategoriesFilter />
       <main className='bg-slate-100'>
-        <section className='container mx-auto flex gap-3'>
-          <div className='w-2/6'>
+        <section className='container mx-auto flex flex-col-reverse lg:flex-row gap-3'>
+          <div className='w-full lg:w-2/6'>
             <h1 className='poppins-semibold mt-3'>Recent Post</h1>
             <div className='flex flex-col gap-3 py-3'>
               {loading
@@ -67,8 +67,8 @@ const AllBlogs = () => {
                     ))}
             </div>
           </div>
-          <div className='w-4/6 py-3'>
-            <div className='grid grid-cols-2 gap-2'>
+          <div className='lg:w-4/6 py-3'>
+            <div className='grid md:grid-cols-2 gap-2'>
               {loading ? (
                 <>
                   {Array.from({ length: 4 }).map((_, index) => (

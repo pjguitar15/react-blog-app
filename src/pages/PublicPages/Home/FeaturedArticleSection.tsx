@@ -9,7 +9,7 @@ const FeaturedArticleSection = () => {
     <section className='bg-white py-12'>
       <div className='container mx-auto'>
         <div className='flex justify-between text-lg font-semibold'>
-          <div className='flex items-center gap-3'>
+          <div className='items-center gap-3 hidden sm:flex'>
             <h5>Featured Article</h5>
             <div className='bg-slate-800 h-0.5 w-9 mt-1'></div>
           </div>
@@ -20,7 +20,7 @@ const FeaturedArticleSection = () => {
         </div>
 
         {/* cards */}
-        <div className='grid grid-cols-4 mt-8 gap-4'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8 gap-4'>
           {dataFromFirestore
             .filter((item) => item.status === 'published')
             .slice(0, 4)

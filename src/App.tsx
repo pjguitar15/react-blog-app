@@ -11,7 +11,9 @@ import BlogProvider from './Context/BlogProvider'
 const NavbarWrapper = () => {
   return (
     <>
-      <Navbar />
+      <div className='hidden md:block'>
+        <Navbar />
+      </div>
       <Outlet />
       <Footer />
     </>

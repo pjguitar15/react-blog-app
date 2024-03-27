@@ -21,11 +21,11 @@ const NewsletterSection = () => {
         <div className='text-center'>
           <form className='mt-4 poppins-medium'>
             <input
-              className='font-light px-6 py-3 rounded me-2 text-sm shadow-sm w-72 outline-violet-300'
+              className='font-light px-6 py-3 rounded me-2 text-sm shadow-sm w-3/4 sm:w-72 outline-violet-300'
               placeholder='Enter your email here'
               type='text'
             />
-            <button className='bg-violet-600 text-white px-6 py-3 rounded text-sm'>
+            <button className='bg-violet-600 w-3/4 sm:w-auto mt-2 sm:mt-0 text-white px-6 py-2 sm:py-3 rounded text-sm'>
               Subscribe
             </button>
           </form>

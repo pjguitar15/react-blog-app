@@ -24,7 +24,7 @@ const About = () => {
   }
   return (
     <main className='bg-slate-100 py-7'>
-      <div className='container mx-auto flex gap-3'>
+      <div className='container mx-auto flex flex-col lg:flex-row gap-5'>
         <div className='bg-white rounded-xl p-7 flex gap-7'>
           <div className='flex flex-col justify-between'>
             <div>

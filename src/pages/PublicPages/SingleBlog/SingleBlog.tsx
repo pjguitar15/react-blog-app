@@ -15,7 +15,9 @@ const SingleBlog = () => {
   const param = useParams()
   const { data } = useGetDocFromRoute(`/${param.id}`)
   const { dataFromFirestore } = useGetDoc('blogs')
+
   useEffect(() => {
+    window.scrollTo(0, 0)
     console.log(data)
   }, [data])
 

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { FaCirclePlus } from 'react-icons/fa6'
-import { TEST_ROW_DATA } from '../testData'
 import Pagination from '../../../../../components/Pagination'
 import { Link, useNavigate } from 'react-router-dom'
 import { useBlogContext } from '../../../../../Context/BlogContext'
@@ -63,7 +62,7 @@ const Blogs = () => {
 
       {!loading && (
         <Pagination
-          data={TEST_ROW_DATA}
+          data={dataFromFirestore}
           itemsPerPage={itemsPerPage}
           onPageChange={handlePageChange}
           currentPage={currentPage}

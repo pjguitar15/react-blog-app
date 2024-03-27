@@ -10,6 +10,8 @@ const Pagination = ({
   currentPage: number
 }) => {
   const totalPages = Math.ceil(data.length / itemsPerPage)
+  console.log('total pages', totalPages)
+  console.log('data length', data.length)
 
   const handlePageChange = (page: number) => {
     onPageChange(page)

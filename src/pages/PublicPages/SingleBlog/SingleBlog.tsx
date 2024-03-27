@@ -85,7 +85,7 @@ const SingleBlog = () => {
                   <img className='w-3/4 h-auto' src={item.content} alt='' />
                 )}
                 {item.type === 'paragraph' && (
-                  <p className='poppins-regular text-slate-500 text-sm leading-loose indent-7'>
+                  <p className='poppins-regular text-slate-500 text-sm leading-loose'>
                     {item.content}
                   </p>
                 )}

@@ -51,9 +51,11 @@ const PendingItem: React.FC<{ item: BlogType }> = ({ item }) => {
           <h6 className='poppins-regular text-xs text-slate-500'>
             {item.publishDate}
           </h6>
-          <div className='poppins-regular text-xs text-slate-500 flex items-center gap-1'>
-            <div className='size-2 bg-yellow-500 rounded-full animate-bounce' />{' '}
-            Pending
+          <div className='poppins-regular text-xs text-slate-500 flex items-center gap-1 capitalize'>
+            <div
+              className={`size-2 ${item.status === 'pending' ? 'bg-yellow-500' : item.status === 'published' ? 'bg-green-500' : 'bg-red-500'}  rounded-full animate-bounce`}
+            />
+            {item.status}
           </div>
         </div>
       </div>

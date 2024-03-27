@@ -4,7 +4,7 @@ const MainPostItem = ({ item }: { item: any }) => {
   return (
     <div className='bg-white rounded-md shadow-md p-3'>
       <img
-        className='max-h-[300px] w-full object-cover'
+        className='h-[250px] w-full object-cover rounded-lg'
         src={item.featuredImage}
         alt=''
       />

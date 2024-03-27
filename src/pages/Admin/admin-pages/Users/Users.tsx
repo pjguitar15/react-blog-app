@@ -21,7 +21,7 @@ const Users = () => {
     <main className='bg-slate-100 w-full p-7'>
       <div className='flex justify-between font-semibold'>
         <div className='flex items-center gap-3'>
-          <h5 className='text-lg'>{TEST_ROW_DATA.length} Users</h5>
+          <h5 className='text-lg'>21 Users</h5>
           {/* <div className='bg-slate-800 h-0.5 w-9 mt-1'></div> */}
         </div>
         {/* <Link

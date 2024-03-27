@@ -9,10 +9,12 @@ import Comment from './Comment'
 import { useGetDocFromRoute } from '../../../helpers/hooks/useGetDocFromRoute'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
+import { useGetDoc } from '../../../helpers/hooks/useGetDoc'
 
 const SingleBlog = () => {
   const param = useParams()
   const { data } = useGetDocFromRoute(`/${param.id}`)
+  const { dataFromFirestore } = useGetDoc('blogs')
   useEffect(() => {
     console.log(data)
   }, [data])
@@ -171,10 +173,12 @@ const SingleBlog = () => {
 
           <div className='flex flex-col gap-5'>
             {/* recent post contents */}
-            <RecentPostItem />
-            <RecentPostItem />
-            <RecentPostItem />
-            <RecentPostItem />
+            {dataFromFirestore
+              .filter((item) => item.status === 'published')
+              .slice(0, 8)
+              .map((item, index) => (
+                <RecentPostItem item={item} key={index} />
+              ))}
           </div>
         </div>
       </section>

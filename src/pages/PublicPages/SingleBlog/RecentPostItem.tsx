@@ -1,16 +1,12 @@
 import { HiOutlineArrowRightCircle } from 'react-icons/hi2'
+import { BlogType } from '../../Admin/admin-pages/Blogs/AllBlogs/BlogsTable'
 
-const RecentPostItem = () => {
+const RecentPostItem: React.FC<{ item: BlogType }> = ({ item }) => {
   return (
     <div className='flex flex-col gap-2'>
-      <h6 className='text-md poppins-regular text-slate-700 '>
-        Presentations at Spurbee: The Gift of Giving
-      </h6>
+      <h6 className='text-md poppins-regular text-slate-700 '>{item.title}</h6>
       <p className='text-slate-400 text-xs poppins-light'>
-        {`Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Doloremque modi autem laudantium magnam ut ipsam, ipsa esse.
-                Quos amet harum quam officiis suscipit eos et sunt quod,
-                explicabo, laborum praesentium?`.slice(0, 150)}
+        {item.summary.slice(0, 150)}
         ...
       </p>
       <button className='uppercase poppins-regular text-xs text-slate-400 flex items-center gap-2'>

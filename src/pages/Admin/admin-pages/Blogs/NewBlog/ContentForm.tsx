@@ -80,7 +80,27 @@ const ContentForm = () => {
           className='flex flex-col gap-3 bg-white pb-4 pt-3 px-2 shadow rounded-lg'
         >
           {contentData.map((item: any, index: number) => (
-            <Reorder.Item value={item}>
+            <Reorder.Item className='relative' value={item}>
+              <div className='absolute left-0 top-0 h-full w-6 px-1 bg-violet-200 z-10 rounded-tl-lg rounded-bl-lg flex items-center justify-center cursor-pointer'>
+                <div className='flex flex-col gap-1 items-center'>
+                  <div className='flex justify-center w-full'>
+                    <div className='size-1 rounded-full bg-violet-400' />
+                    <div className='size-1 rounded-full bg-violet-400 ms-1' />
+                  </div>
+                  <div className='flex justify-center w-full'>
+                    <div className='size-1 rounded-full bg-violet-400' />
+                    <div className='size-1 rounded-full bg-violet-400 ms-1' />
+                  </div>
+                  <div className='flex justify-center w-full'>
+                    <div className='size-1 rounded-full bg-violet-400' />
+                    <div className='size-1 rounded-full bg-violet-400 ms-1' />
+                  </div>
+                  <div className='flex justify-center w-full'>
+                    <div className='size-1 rounded-full bg-violet-400' />
+                    <div className='size-1 rounded-full bg-violet-400 ms-1' />
+                  </div>
+                </div>
+              </div>
               <ContentItem
                 key={item.id}
                 item={item}
@@ -113,7 +133,7 @@ const ContentItem = ({
   return (
     <>
       {item.type === 'heading' && (
-        <div className='relative group hover:bg-slate-100 py-2 ps-5 pe-12'>
+        <div className='relative group hover:bg-slate-100 py-2 ps-10 pe-12'>
           <input
             onChange={(e) => setContent(e.target.value)}
             className={`text-lg poppins-medium text-slate-700 rounded-md outline-none w-full bg-transparent`}
@@ -130,7 +150,7 @@ const ContentItem = ({
         </div>
       )}
       {item.type === 'paragraph' && (
-        <div className='relative group hover:bg-slate-100 py-2 ps-5 pe-12'>
+        <div className='relative group hover:bg-slate-100 py-2 ps-10 pe-12'>
           <textarea
             className={`text-sm poppins-regular text-slate-500 rounded-md outline-none w-full bg-transparent overflow-x-hidden resize-none min-h-[120px] leading-loose`}
             value={item.content as string}
@@ -148,7 +168,7 @@ const ContentItem = ({
       )}
 
       {item.type === 'image' && (
-        <div className='relative group hover:bg-slate-100 py-2 ps-5 pe-12'>
+        <div className='relative group hover:bg-slate-100 py-2 ps-10 pe-12'>
           {item.content === '' ? (
             <div className='cursor-pointer w-2/4 flex items-center justify-center bg-blue-200 rounded-md outline-none text-sm text-blue-900 py-2 px-4 hover:bg-blue-300'>
               <input

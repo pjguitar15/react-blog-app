@@ -16,7 +16,7 @@ const AllBlogs = () => {
   const category = searchParams.get('category')
 
   useEffect(() => {
-    console.log(displayData)
+    console.log('Display Data', displayData)
   }, [displayData])
 
   useEffect(() => {
@@ -29,21 +29,17 @@ const AllBlogs = () => {
 
   useEffect(() => {
     if (dataFromFirestore) {
-      console.log('Check if Data Exists')
       const isDataExist = dataFromFirestore.some(
         (item) => item.category === category
       )
-      console.log('Does it?', isDataExist)
 
       if (isDataExist) {
         const filterData = dataFromFirestore.filter(
           (item) => item.category === category && item.status === 'published'
         )
-        console.log('Data will be set to filtered because it exist!')
         setDisplayData(filterData)
       } else {
         setDisplayData([])
-        console.log('Data will be set to [] because it does not exist')
       }
     }
   }, [category, dataFromFirestore])
@@ -99,7 +95,7 @@ const AllBlogs = () => {
                 </>
               )}
             </div>
-            {!displayData.length && <NoItems />}
+            {displayData.length === 0 && category !== 'All' && <NoItems />}
           </div>
         </section>
       </main>

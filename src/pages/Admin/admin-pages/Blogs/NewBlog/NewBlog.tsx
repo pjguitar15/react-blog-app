@@ -3,7 +3,7 @@ import BlogDetailsForm from './BlogDetailsForm'
 import ContentForm from './ContentForm'
 import { useBlogContext } from '../../../../../Context/BlogContext'
 import AreYouSureModal from '../../../../../components/AreYouSureModal'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import WormieSuccess from '../../../../../assets/wormie-success.png'
 
@@ -20,6 +20,15 @@ const NewBlog = () => {
   } = useBlogContext()
   const [open, setOpen] = useState(false)
   const navigate = useNavigate()
+  const errorMessageRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (errorMessageRef)
+      errorMessageRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+  }, [validationError])
 
   const cancelHandler = () => {
     setOpen(false)
@@ -36,7 +45,10 @@ const NewBlog = () => {
         title='Confirm Dialog'
         message='Are you sure you want to discard all your changes?'
       />
-      <div className='flex justify-between font-semibold mb-4'>
+      <div
+        className='flex justify-between font-semibold mb-4'
+        ref={errorMessageRef}
+      >
         <div className='flex items-center gap-3'>
           <h5 className='text-lg'>New Blog Post</h5>
           <div className='bg-slate-800 h-0.5 w-9 mt-1'></div>

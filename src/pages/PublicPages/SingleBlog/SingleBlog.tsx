@@ -57,7 +57,7 @@ const SingleBlog = () => {
           src={data?.featuredImage}
           alt=''
         />
-        <div className='py-5 absolute bottom-0 w-full flex justify-center gap-12'>
+        <div className='py-5 absolute bottom-0 w-full flex justify-center gap-12 overflow-x-scroll'>
           {DETAIL_ITEMS.map((item, index) => (
             <HeroDetailItem
               roundColor={item.roundColor}
@@ -68,8 +68,8 @@ const SingleBlog = () => {
           ))}
         </div>
       </section>
-      <section className='container mx-auto flex gap-[150px] py-12'>
-        <div className='w-4/6'>
+      <section className='container mx-auto flex flex-col lg:flex-row gap-[150px] py-12'>
+        <div className='lg:w-4/6'>
           {/* blog content here */}
           <div className='flex gap-2 items-center text-xs mb-6'>
             <div className='poppins-medium text-yellow-500'>Home</div>
@@ -115,7 +115,7 @@ const SingleBlog = () => {
                   <FaTwitter className='text-slate-400 text-xl' />
                 </div>
               </div>
-              <div className='ms-12'>
+              <div className='ms-12 overflow-x-scroll'>
                 <div className='flex gap-3 items-center'>
                   <div className='bg-orange-300 h-0.5 w-4'></div>
                   <h6 className='poppins-regular text-sm text-slate-500'>
@@ -158,7 +158,7 @@ const SingleBlog = () => {
             </div>
           </div>
         </div>
-        <div className='w-2/6'>
+        <div className='lg:w-2/6'>
           <div className='relative mb-7'>
             <input
               className='poppins-regular text-xs border px-4 py-3 border-slate-400 w-full outline-slate-300'

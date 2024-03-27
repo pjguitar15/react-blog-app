@@ -11,7 +11,7 @@ const MobileNavbar = () => {
     setIsOpen(!isOpen)
   }
   return (
-    <nav className='py-4 shadow-md relative z-0'>
+    <nav className='py-4 shadow-md relative z-50'>
       <NavContent show={isOpen} toggle={toggle} />
       <div className='container mx-auto flex justify-between'>
         <div

@@ -7,12 +7,16 @@ import { privateRoutes } from './routes/privateRoutes'
 import AuthProvider from './Context/AuthProvider'
 import AuthGuardWrapper from './components/AuthGuardWrapper'
 import BlogProvider from './Context/BlogProvider'
+import MobileNavbar from './components/Navbar/MobileNavbar/MobileNavbar'
 
 const NavbarWrapper = () => {
   return (
     <>
       <div className='hidden md:block'>
         <Navbar />
+      </div>
+      <div className='md:hidden'>
+        <MobileNavbar />
       </div>
       <Outlet />
       <Footer />

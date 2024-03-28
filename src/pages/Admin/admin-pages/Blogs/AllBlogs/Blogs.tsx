@@ -44,7 +44,7 @@ const Blogs = () => {
         </div>
         <Link
           to='/admin/blogs/new'
-          className='flex items-center gap-2 bg-violet-600 text-white px-4 rounded-lg py-2'
+          className='flex items-center gap-2 bg-blue-600 text-white px-4 rounded-lg py-2'
         >
           <FaCirclePlus className='text-xl' />
           <h5 className='text-md'>Create</h5>

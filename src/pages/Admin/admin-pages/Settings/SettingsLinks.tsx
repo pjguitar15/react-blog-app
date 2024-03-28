@@ -36,7 +36,7 @@ const SettingsLinks: React.FC<{
           key={index}
         >
           <div
-            className={`${item.text === activeLink ? 'text-violet-600 font-bold' : 'text-slate-500'} text-lg`}
+            className={`${item.text === activeLink ? 'text-blue-600 font-bold' : 'text-slate-500'} text-lg`}
           >
             {item.icon}
           </div>

@@ -108,7 +108,7 @@ const AddCategories = ({
           </div>
           <button
             onClick={() => setMode('read')}
-            className='flex items-center gap-1 bg-violet-700 text-white px-4 rounded py-2'
+            className='flex items-center gap-1 bg-blue-700 text-white px-4 rounded py-2'
           >
             <h5 className='text-sm flex items-center gap-2'>
               <HiOutlineArrowLeft />
@@ -120,9 +120,9 @@ const AddCategories = ({
           className='flex flex-col w-3/4 mx-auto gap-3 bg-white p-12 rounded-xl max-w-[700px] mt-12 shadow-md'
           onSubmit={addCategoryHandler}
         >
-          <TbCategory className='text-violet-500 text-8xl mx-auto mb-3' />
+          <TbCategory className='text-blue-500 text-8xl mx-auto mb-3' />
           <input
-            className='bg-gray-100 px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm'
+            className='bg-gray-100 px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm'
             placeholder='Add category name'
             type='text'
             value={categoryInput}
@@ -130,7 +130,7 @@ const AddCategories = ({
           />
           <input
             ref={imageInputRef}
-            className='bg-gray-100 px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm'
+            className='bg-gray-100 px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm'
             placeholder='Add category name'
             type='file'
             onChange={(e) => {

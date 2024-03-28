@@ -58,7 +58,7 @@ const AdminSidebar = () => {
                 <h4 className='text-blue-900 text-2xl poppins-semibold'>
                   DevGuide
                 </h4>
-                <p className='text-purple-500 poppins-medium text-lg'>.Blog</p>
+                <p className='text-blue-500 poppins-medium text-lg'>.Blog</p>
               </div>
             </div>
             <p className='text-xs text-slate-500 text-center poppins-regular'>
@@ -88,7 +88,7 @@ const AdminSidebar = () => {
                     console.log(error)
                   })
               }}
-              className='flex justify-start ps-14 gap-3 items-center py-3 border-l-4 hover:border-violet-700 cursor-pointer'
+              className='flex justify-start ps-14 gap-3 items-center py-3 border-l-4 hover:border-blue-700 cursor-pointer'
             >
               <CiLogout className='text-slate-500' />
               <h5 className='text-sm poppins-regular text-slate-500 capitalize'>
@@ -98,14 +98,14 @@ const AdminSidebar = () => {
           </div>
           <Link
             to='/'
-            className='mt-auto w-full mb-6 text-violet-600 poppins-regular text-sm flex gap-1 items-center justify-center hover:scale-105 transition duration-300'
+            className='mt-auto w-full mb-6 text-blue-600 poppins-regular text-sm flex gap-1 items-center justify-center hover:scale-105 transition duration-300'
           >
             <GoHome className='text-lg' />
             Go to Homepage
           </Link>
         </div>
       ) : (
-        <div className='bg-violet-400 w-1'></div>
+        <div className='bg-blue-400 w-1'></div>
       )}
     </>
   )

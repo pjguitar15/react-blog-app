@@ -14,7 +14,7 @@ const DisplayTags = ({
         </div>
         <button
           onClick={() => setMode('write')}
-          className='flex items-center gap-1 bg-violet-700 text-white px-4 rounded py-2'
+          className='flex items-center gap-1 bg-blue-700 text-white px-4 rounded py-2'
         >
           <h5 className='text-sm'>Add a Tag</h5>
           <IoIosAddCircleOutline className='text-2xl' />
@@ -32,7 +32,7 @@ const DisplayTags = ({
 
 const TagItem = ({ tagName }: { tagName: string }) => {
   return (
-    <div className='text-center text-lg shadow-lg bg-violet-500 text-white font-bold py-3 px-4 rounded-lg relative'>
+    <div className='text-center text-lg shadow-lg bg-blue-500 text-white font-bold py-3 px-4 rounded-lg relative'>
       <div className='size-3 rounded-full bg-white absolute top-2 left-2'></div>
       <div className='ms-4'>{tagName}</div>
     </div>

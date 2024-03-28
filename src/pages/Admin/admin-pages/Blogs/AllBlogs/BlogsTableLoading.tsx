@@ -1,7 +1,7 @@
 const BlogsTableLoading = () => {
   return (
     <div className='bg-white rounded-lg mt-8 border'>
-      <div className='flex px-6 py-4 poppins-semibold text-sm text-violet-900 border-b'>
+      <div className='flex px-6 py-4 poppins-semibold text-sm text-blue-900 border-b'>
         <h5 className='w-2/12'>Author</h5>
         <h5 className='w-3/12'>Home Page URL</h5>
         <h5 className='w-1/12'>Views</h5>

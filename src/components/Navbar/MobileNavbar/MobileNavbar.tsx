@@ -19,11 +19,11 @@ const MobileNavbar = () => {
           onClick={() => navigate('/')}
         >
           <h4 className='text-blue-900 text-2xl poppins-semibold'>DevGuide</h4>
-          <p className='text-purple-500 poppins-medium text-md'>.Blog</p>
+          <p className='text-blue-500 poppins-medium text-md'>.Blog</p>
         </div>
         <div>
           <button onClick={toggle} className='rounded h-full px-3'>
-            <GiHamburgerMenu className={`text-violet-500 text-xl`} />
+            <GiHamburgerMenu className={`text-blue-500 text-xl`} />
           </button>
         </div>
       </div>

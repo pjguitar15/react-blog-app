@@ -76,35 +76,35 @@ const RegisterForm = () => {
         onSubmit={handleSubmit}
         className='flex flex-col w-3/4 mx-auto gap-3'
       >
-        <div className='rounded-full p-4 bg-violet-100 overflow-hidden size-32 mx-auto mb-3'>
+        <div className='rounded-full p-4 bg-blue-100 overflow-hidden size-32 mx-auto mb-3'>
           <img
             src='https://cdn-icons-png.flaticon.com/512/3001/3001758.png'
             alt=''
           />
         </div>
         <input
-          className='bg-gray-100 px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm'
+          className='bg-gray-100 px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm'
           value={emailInput}
           onChange={(e) => setEmailInput(e.target.value)}
           placeholder='Enter your email'
           type='text'
         />
         <input
-          className='bg-gray-100 px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm'
+          className='bg-gray-100 px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm'
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
           placeholder='Enter your display name'
           type='text'
         />
         <input
-          className='bg-gray-100 px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm'
+          className='bg-gray-100 px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm'
           value={passwordInput}
           onChange={(e) => setPasswordInput(e.target.value)}
           placeholder='Enter your password'
           type='password'
         />
         <input
-          className='bg-gray-100 px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm'
+          className='bg-gray-100 px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm'
           value={confirmPasswordInput}
           onChange={(e) => setConfirmPasswordInput(e.target.value)}
           placeholder='Confirm your password'
@@ -119,10 +119,10 @@ const RegisterForm = () => {
         />
         <Link
           to='/sign-in'
-          className='text-sm text-violet-500 poppins-regular text-center hover:scale-105 transition duration-300'
+          className='text-sm text-blue-500 poppins-regular text-center hover:scale-105 transition duration-300'
         >
           Already registered?{' '}
-          <span className='text-violet-700 poppins-medium'> Sign in!</span>
+          <span className='text-blue-700 poppins-medium'> Sign in!</span>
         </Link>
       </form>
     </>

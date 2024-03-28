@@ -81,23 +81,23 @@ const ContentForm = () => {
         >
           {contentData.map((item: any, index: number) => (
             <Reorder.Item className='relative' value={item}>
-              <div className='absolute left-0 top-0 h-full w-6 px-1 bg-violet-200 z-10 rounded-tl-lg rounded-bl-lg flex items-center justify-center cursor-pointer'>
+              <div className='absolute left-0 top-0 h-full w-6 px-1 bg-blue-200 z-10 rounded-tl-lg rounded-bl-lg flex items-center justify-center cursor-pointer'>
                 <div className='flex flex-col gap-1 items-center'>
                   <div className='flex justify-center w-full'>
-                    <div className='size-1 rounded-full bg-violet-400' />
-                    <div className='size-1 rounded-full bg-violet-400 ms-1' />
+                    <div className='size-1 rounded-full bg-blue-400' />
+                    <div className='size-1 rounded-full bg-blue-400 ms-1' />
                   </div>
                   <div className='flex justify-center w-full'>
-                    <div className='size-1 rounded-full bg-violet-400' />
-                    <div className='size-1 rounded-full bg-violet-400 ms-1' />
+                    <div className='size-1 rounded-full bg-blue-400' />
+                    <div className='size-1 rounded-full bg-blue-400 ms-1' />
                   </div>
                   <div className='flex justify-center w-full'>
-                    <div className='size-1 rounded-full bg-violet-400' />
-                    <div className='size-1 rounded-full bg-violet-400 ms-1' />
+                    <div className='size-1 rounded-full bg-blue-400' />
+                    <div className='size-1 rounded-full bg-blue-400 ms-1' />
                   </div>
                   <div className='flex justify-center w-full'>
-                    <div className='size-1 rounded-full bg-violet-400' />
-                    <div className='size-1 rounded-full bg-violet-400 ms-1' />
+                    <div className='size-1 rounded-full bg-blue-400' />
+                    <div className='size-1 rounded-full bg-blue-400 ms-1' />
                   </div>
                 </div>
               </div>

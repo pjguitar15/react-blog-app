@@ -9,7 +9,7 @@ const AccountContent = () => {
               FIRST NAME
             </span>
             <input
-              className='bg-white px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
+              className='bg-white px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
               placeholder='Enter your username'
               type='text'
             />
@@ -19,7 +19,7 @@ const AccountContent = () => {
               MIDDLE NAME
             </span>
             <input
-              className='bg-white px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
+              className='bg-white px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
               placeholder='Enter your username'
               type='text'
             />
@@ -29,7 +29,7 @@ const AccountContent = () => {
               LAST NAME
             </span>
             <input
-              className='bg-white px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
+              className='bg-white px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
               placeholder='Enter your username'
               type='text'
             />
@@ -42,7 +42,7 @@ const AccountContent = () => {
               FIRST NAME
             </span>
             <input
-              className='bg-white px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
+              className='bg-white px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
               placeholder='Enter your username'
               type='text'
             />
@@ -52,7 +52,7 @@ const AccountContent = () => {
               MIDDLE NAME
             </span>
             <input
-              className='bg-white px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
+              className='bg-white px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
               placeholder='Enter your username'
               type='text'
             />
@@ -62,7 +62,7 @@ const AccountContent = () => {
               LAST NAME
             </span>
             <input
-              className='bg-white px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
+              className='bg-white px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
               placeholder='Enter your username'
               type='text'
             />
@@ -75,7 +75,7 @@ const AccountContent = () => {
               FIRST NAME
             </span>
             <input
-              className='bg-white px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
+              className='bg-white px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
               placeholder='Enter your username'
               type='text'
             />
@@ -85,7 +85,7 @@ const AccountContent = () => {
               MIDDLE NAME
             </span>
             <input
-              className='bg-white px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
+              className='bg-white px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
               placeholder='Enter your username'
               type='text'
             />
@@ -95,7 +95,7 @@ const AccountContent = () => {
               LAST NAME
             </span>
             <input
-              className='bg-white px-4 py-2 rounded-lg outline-violet-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
+              className='bg-white px-4 py-2 rounded-lg outline-blue-600 poppins-regular text-sm w-full border border-slate-400 mt-1'
               placeholder='Enter your username'
               type='text'
             />

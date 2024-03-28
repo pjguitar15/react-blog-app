@@ -2,6 +2,7 @@ import { CiFacebook } from 'react-icons/ci'
 import { FaInstagram } from 'react-icons/fa'
 import { RiYoutubeLine } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
+import DevBlogLogo from '../assets/dev-blog-logo.svg'
 
 const Footer = () => {
   const currentDate = new Date()
@@ -16,10 +17,11 @@ const Footer = () => {
             className='flex items-end cursor-pointer justify-center md:justify-start'
             onClick={() => navigate('/')}
           >
+            <img className='size-5' src={DevBlogLogo} alt='' />
             <h4 className='text-blue-900 text-2xl poppins-semibold'>
               DevGuide
             </h4>
-            <p className='text-purple-500 poppins-medium text-md'>.Blog</p>
+            <p className='text-blue-500 poppins-medium text-md'>.Blog</p>
           </div>
           <p className='poppins-light text-sm text-slate-500 my-3 text-center md:text-start'>
             DevGuide Blog by Philcob Josol

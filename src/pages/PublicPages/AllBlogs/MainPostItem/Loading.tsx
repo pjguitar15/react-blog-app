@@ -1,6 +1,15 @@
+import { motion } from 'framer-motion'
 const Loading = () => {
   return (
-    <div className='bg-white rounded-md shadow-md p-3'>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 0.3,
+      }}
+      className='bg-white rounded-md shadow-md p-3'
+    >
       <div className='w-full bg-slate-200 rounded-lg h-64' />
       <div className='w-1/4 bg-slate-200 rounded h-6 mt-6' />
       <div className='w-2/6 bg-slate-200 rounded h-6 mt-2' />
@@ -16,7 +25,7 @@ const Loading = () => {
         <div className='bg-slate-200 rounded-full size-7' />
         <div className='w-1/4 bg-slate-200 rounded h-6' />
       </div>
-    </div>
+    </motion.div>
   )
 }
 

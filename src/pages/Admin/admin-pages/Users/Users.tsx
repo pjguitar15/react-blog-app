@@ -26,7 +26,7 @@ const Users = () => {
         </div>
         {/* <Link
           to='/admin/blogs/new'
-          className='flex items-center gap-2 bg-violet-600 text-white px-4 rounded-lg py-2'
+          className='flex items-center gap-2 bg-blue-600 text-white px-4 rounded-lg py-2'
         >
           <FaCirclePlus className='text-xl' />
           <h5 className='text-md'>Create</h5>
@@ -34,7 +34,7 @@ const Users = () => {
       </div>
       {/* Table here */}
       <div className='bg-white rounded-lg mt-8 border'>
-        <div className='flex px-6 py-4 poppins-semibold text-sm text-violet-900 border-b'>
+        <div className='flex px-6 py-4 poppins-semibold text-sm text-blue-900 border-b'>
           <h5 className='w-3/12'>Name</h5>
           <h5 className='w-4/12'>Published Blogs</h5>
           <h5 className='w-3/12'>Account Age</h5>

@@ -105,7 +105,7 @@ const PendingItem: React.FC<{
       {/* Right */}
       <div className='py-3 w-3/4'>
         <h5 className='poppins-medium text-lg'>{item.title}</h5>
-        <div className='poppins-regular bg-violet-500 text-white text-xs px-3 py-1 mb-1 inline-block rounded-full'>
+        <div className='poppins-regular bg-blue-500 text-white text-xs px-3 py-1 mb-1 inline-block rounded-full'>
           {item.category}
         </div>
         <p className='poppins-regular text-slate-500 text-xs leading-relaxed'>

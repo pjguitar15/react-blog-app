@@ -2,23 +2,31 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import PrimaryButton from '../PrimaryButton'
 import SearchButton from './SearchButton'
 import { useAuthContext } from '../../Context/AuthContext'
+import DevBlogLogo from '../../assets/dev-blog-logo.svg'
+import { motion } from 'framer-motion'
 
 const Navbar = () => {
   const navigate = useNavigate()
   const { loggedInUser, loading } = useAuthContext()
   return (
-    <nav className='py-4 shadow-md relative z-0'>
+    <motion.nav
+      initial={{ y: -70 }}
+      animate={{ y: 0 }}
+      transition={{ ease: 'easeInOut', duration: 0.7 }}
+      className='py-4 shadow-md z-50 sticky top-0 right-0 left-0 bg-white'
+    >
       {/* left section */}
-      <div className='container mx-auto flex justify-between'>
+      <div className='container mx-auto flex justify-between '>
         <div>
           <div
             className='flex items-end cursor-pointer'
             onClick={() => navigate('/')}
           >
+            <img className='size-5' src={DevBlogLogo} alt='' />
             <h4 className='text-blue-900 text-2xl poppins-semibold'>
               DevGuide
             </h4>
-            <p className='text-purple-500 poppins-medium text-md'>.Blog</p>
+            <p className='text-blue-500 poppins-medium text-md'>.Blog</p>
           </div>
         </div>
         {/* right section */}
@@ -67,7 +75,7 @@ const Navbar = () => {
           </div>
           <div className='ms-2'>
             {loading ? (
-              <div className='w-40 rounded-md h-10 bg-violet-200 animate-pulse'></div>
+              <div className='w-40 rounded-md h-10 bg-blue-200 animate-pulse'></div>
             ) : (
               <>
                 {loggedInUser ? (
@@ -90,7 +98,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   )
 }
 

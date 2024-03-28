@@ -1,4 +1,5 @@
 import { GoArrowRight } from 'react-icons/go'
+import { motion } from 'framer-motion'
 
 const SidebarPostItem = ({
   imgUrl,
@@ -8,7 +9,12 @@ const SidebarPostItem = ({
   summary: string
 }) => {
   return (
-    <div className='flex gap-2 bg-white shadow-md rounded-lg overflow-hidden'>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: 'easeInOut', duration: 0.8, delay: 0.4 }}
+      className='flex gap-2 bg-white shadow-md rounded-lg overflow-hidden'
+    >
       <img className='w-2/6 object-cover' src={imgUrl} alt='' />
       <div className='p-2 flex flex-col gap-2 justify-center'>
         <h6 className='text-xs poppins-regular'>{summary.slice(0, 100)}...</h6>
@@ -17,7 +23,7 @@ const SidebarPostItem = ({
           <GoArrowRight />
         </button>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

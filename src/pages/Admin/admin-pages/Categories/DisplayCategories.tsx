@@ -71,7 +71,7 @@ const DisplayCategories = ({
         </div>
         <button
           onClick={() => setMode('write')}
-          className='flex items-center gap-1 bg-violet-700 text-white px-4 rounded py-2'
+          className='flex items-center gap-1 bg-blue-700 text-white px-4 rounded py-2'
         >
           <h5 className='text-sm'>Add a Category</h5>
           <IoIosAddCircleOutline className='text-2xl' />
@@ -88,7 +88,7 @@ const DisplayCategories = ({
           data?.map((item: CategoryType, index: number) => (
             <div
               key={index}
-              className='py-24 flex flex-col items-center justify-center bg-white rounded cursor-pointer hover:bg-violet-100 transition duration-300 relative group'
+              className='py-24 flex flex-col items-center justify-center bg-white rounded cursor-pointer hover:bg-blue-100 transition duration-300 relative group'
             >
               <IoCloseOutline
                 onClick={() => {

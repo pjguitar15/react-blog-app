@@ -57,7 +57,7 @@ const TopArticleItem: React.FC<{ item: BlogType; number: number }> = ({
         </p>
       </div>
       <div className='flex gap-12 justify-center items-start w-4/12'>
-        <div className='flex gap-1 items-center text-violet-900'>
+        <div className='flex gap-1 items-center text-blue-900'>
           <IoIosEye />
           <span className='poppins-semibold'>6.5k</span>
         </div>

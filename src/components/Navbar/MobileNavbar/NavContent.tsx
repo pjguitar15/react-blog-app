@@ -27,7 +27,7 @@ const NavContent = ({
           show ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className='h-full bg-white fixed w-3/4 transform z-50'>
+        <div className='h-full bg-white fixed w-full sm:w-3/4 transform z-50'>
           <div className='flex justify-end p-4'>
             <button onClick={toggle} className='rounded px-3 py-2'>
               <IoClose className='text-slate-600 text-3xl' />
@@ -40,7 +40,7 @@ const NavContent = ({
             <h4 className='text-blue-900 text-2xl poppins-semibold'>
               DevGuide
             </h4>
-            <p className='text-purple-500 poppins-medium text-md'>.Blog</p>
+            <p className='text-blue-500 poppins-medium text-md'>.Blog</p>
           </div>
 
           <ul className='flex-col h-full'>
@@ -66,7 +66,7 @@ const NavContent = ({
               </div>
               <div>
                 {loading ? (
-                  <div className='w-40 rounded-md h-10 bg-violet-200 animate-pulse'></div>
+                  <div className='w-40 rounded-md h-10 bg-blue-200 animate-pulse'></div>
                 ) : (
                   <>
                     {loggedInUser ? (

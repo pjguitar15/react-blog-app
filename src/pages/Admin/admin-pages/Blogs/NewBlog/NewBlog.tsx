@@ -58,7 +58,7 @@ const NewBlog = () => {
             <button
               onClick={handleSave}
               disabled={uploadLoading}
-              className={`flex items-center disabled:opacity-50 disabled:cursor-not-allowed gap-2 bg-violet-500 hover:bg-violet-600 hover:scale-105 transition duration-300 text-white px-4 rounded-lg py-2`}
+              className={`flex items-center disabled:opacity-50 disabled:cursor-not-allowed gap-2 bg-blue-500 hover:bg-blue-600 hover:scale-105 transition duration-300 text-white px-4 rounded-lg py-2`}
             >
               <FaRegSave className='text-xl' />
               <h5 className='text-md'>Save</h5>
@@ -71,7 +71,7 @@ const NewBlog = () => {
                   setOpen(true)
                 }
               }}
-              className='poppins-regular text-violet-500 hover:text-violet-700 text-sm flex gap-2 items-center'
+              className='poppins-regular text-blue-500 hover:text-blue-700 text-sm flex gap-2 items-center'
             >
               Cancel
             </button>
@@ -82,7 +82,7 @@ const NewBlog = () => {
               setSuccessMessage('')
               navigate('/admin/blogs')
             }}
-            className='poppins-regular text-violet-500 hover:text-violet-700 text-sm flex gap-2 items-center'
+            className='poppins-regular text-blue-500 hover:text-blue-700 text-sm flex gap-2 items-center'
           >
             Back
           </button>
@@ -125,7 +125,7 @@ const NewBlog = () => {
         <button
           onClick={handleSave}
           disabled={uploadLoading}
-          className={`flex items-center disabled:opacity-50 disabled:cursor-not-allowed gap-2 bg-violet-500 hover:bg-violet-600 hover:scale-105 transition duration-300 text-white px-4 rounded-lg py-2`}
+          className={`flex items-center disabled:opacity-50 disabled:cursor-not-allowed gap-2 bg-blue-500 hover:bg-blue-600 hover:scale-105 transition duration-300 text-white px-4 rounded-lg py-2`}
         >
           <FaRegSave className='text-xl' />
           <h5 className='text-md'>Save</h5>

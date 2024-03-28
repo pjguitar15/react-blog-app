@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 type ArticleCardTypes = {
   title: string
@@ -14,7 +15,10 @@ type ArticleCardTypes = {
 const ArticleCard: React.FC<{ item: ArticleCardTypes }> = ({ item }) => {
   const navigate = useNavigate()
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: 'easeInOut', duration: 0.8, delay: 0.4 }}
       onClick={() => {
         navigate(`blog${item.route}`)
       }}
@@ -51,7 +55,7 @@ const ArticleCard: React.FC<{ item: ArticleCardTypes }> = ({ item }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

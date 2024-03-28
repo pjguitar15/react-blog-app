@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 const About = () => {
   const STAT_BLOCK_CONTENT = [
     { number: '132', description: 'Articles Created' },
@@ -6,26 +7,19 @@ const About = () => {
     { number: '100', description: 'Trusted Blogs' },
   ]
 
-  const StatBlocks = ({
-    number,
-    description,
-  }: {
-    number: string
-    description: string
-  }) => {
-    return (
-      <div className='bg-gray-100 p-5 rounded-lg'>
-        <h4 className='text-xl poppins-semibold'>{number}</h4>
-        <h6 className='poppins-regular text-xs text-slate-500'>
-          {description}
-        </h6>
-      </div>
-    )
-  }
   return (
     <main className='bg-slate-100 py-7'>
       <div className='container mx-auto flex flex-col lg:flex-row gap-5'>
-        <div className='bg-white rounded-xl p-7 flex gap-7'>
+        <motion.div
+          initial={{ x: -40, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            ease: 'easeInOut',
+            duration: 0.4,
+            delay: 0.4,
+          }}
+          className='bg-white rounded-xl p-7 flex gap-7'
+        >
           <div className='flex flex-col justify-between'>
             <div>
               <p className='text-orange-500 font-semibold capitalize mb-3'>
@@ -52,9 +46,18 @@ const About = () => {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
         <div className='flex gap-7'>
-          <div className='flex flex-col gap-2'>
+          <motion.div
+            initial={{ x: 40, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{
+              ease: 'easeInOut',
+              duration: 0.4,
+              delay: 0.4,
+            }}
+            className='flex flex-col gap-2'
+          >
             <img
               className='rounded-lg'
               src='https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
@@ -69,10 +72,34 @@ const About = () => {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </main>
+  )
+}
+
+const StatBlocks = ({
+  number,
+  description,
+}: {
+  number: string
+  description: string
+}) => {
+  return (
+    <motion.div
+      initial={{ x: 40, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{
+        ease: 'easeInOut',
+        duration: 0.4,
+        delay: 0.8,
+      }}
+      className='bg-gray-100 p-5 rounded-lg'
+    >
+      <h4 className='text-xl poppins-semibold'>{number}</h4>
+      <h6 className='poppins-regular text-xs text-slate-500'>{description}</h6>
+    </motion.div>
   )
 }
 
